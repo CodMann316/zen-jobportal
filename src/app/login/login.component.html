@@ -1,0 +1,22 @@
+
+    <div class="container mt-5 p-3 col-md-5 col-6 d-flex justify-content-center card shadow need-validation">
+
+        <form oninput='confirmPass.setCustomValidity(confirmPass.value != pass.value ? "Passwords do not match." : "")'>
+
+            <h2 class="text-center">Sign In</h2>
+
+            <div class="form-group">
+                <label>Email Address</label> <input [(ngModel)]=user.userName placeholder="Email" class="form-control"
+                    type="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label> <input [(ngModel)]=user.password placeholder="Password" class="form-control"
+                    type="password" required>
+            </div>
+
+            <button (click)='login()' class="btn btn-primary rounded-pill form-control">Sign In</button>
+
+        </form>
+    </div>
+
