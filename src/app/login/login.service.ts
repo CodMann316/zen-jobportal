@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../model/user.model';
@@ -8,6 +9,9 @@ import { User } from '../model/user.model';
   providedIn: 'root'
 })
 export class LoginService {
+
+  isValidated=false;
+  
 
   fakeUsers: User[] = [
     new User('ABC', 'abc', 'seeker'),
@@ -19,30 +23,12 @@ export class LoginService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  url = 'http://localhost:4200/assets/usersd.json'
+  url = 'http://localhost:4200/assets/users.json'
 
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+  constructor(private coockie:CookieService, private http: HttpClient) {
+    console.log('login service created')
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
-
-  login(userLocal: User) {
-    return this.http.post<any>(`/users/authenticate`, { userLocal })
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        }
-
-        return user;
-      }));
-  }
 
   validateUser(user:User){
    return this.http.get<User>(this.url)
@@ -54,8 +40,14 @@ export class LoginService {
    
   }
 
+  isLoggedIn(){
+    //alert(this.coockie.get('userName'))
+    return this.coockie.check("userName");
+  }
+
   logout() {
     // remove user from local storage to log user out
+    this.coockie.deleteAll('../')
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }

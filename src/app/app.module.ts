@@ -10,6 +10,7 @@ import { SignupSeekerComponent } from './signup-seeker/signup-seeker.component';
 import { JobComponent } from './job/job.component';
 import {HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
