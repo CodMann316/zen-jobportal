@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 import { Education } from '../model/education.model';
 import { Seeker } from '../model/seeker.model';
 import { User } from '../model/user.model';
@@ -11,18 +12,26 @@ import { WorkExperience } from '../model/WorkExperience.model';
 })
 export class SignupSeekerComponent implements OnInit {
 
+  isWorkExperience:boolean=false;
+
+  setWorkExperience(value){
+    this.isWorkExperience=value
+  }
+
   user:User=new User();
 
   seeker:Seeker=new Seeker();
 
-  educationCount:number=0;
+  educationCount=0;
   education:Education=new Education();
   educations:Education[]=[];
 
   skillName:string;
-  skillNames:string[];
+  skillCount:number=0;
+  skillNames:string[]=[];
   
   workExperience:WorkExperience =new WorkExperience();
+  workExperienceCount=0;
   workExperiences:WorkExperience[]=[];
   
   signup(){
@@ -30,13 +39,34 @@ export class SignupSeekerComponent implements OnInit {
     this.user.userName=this.seeker.email;
   }
 
+  addWorkExperience(){
+    this.workExperiences[this.workExperienceCount++]=this.workExperience;
+  }
+
   addEducation(){
-    this.educations[0]=this.education;
+    this.educations[this.educationCount++]=this.education;
     alert(this.education.city)
   }
 
+  removeEduation(unwantedEducation){
+    this.educations=this.educations.filter(element => element != unwantedEducation)
+  }
+
   addSkill(){
-    this.skillNames[0]=this.skillName;
+    
+    this.skillNames.push(this.skillName)
+    this.skillName=''
+  }
+
+  removeSkill(unwantedSkill:string){
+
+    // for(var count=0; count<this.skillNames.length;count++){
+    //   if(this.skillNames[count].match(unwantedSkill))
+    //   this.skillNames.splice(count,1)
+    //   //delete this.skillNames[count]
+    // }
+
+    this.skillNames=this.skillNames.filter(element => !element.match(unwantedSkill))
   }
 
   constructor() { }

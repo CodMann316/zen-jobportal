@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { SignupSeekerComponent } from './signup-seeker/signup-seeker.component';
 import { JobComponent } from './job/job.component';
+import {HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,10 @@ import { JobComponent } from './job/job.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
     
   ],
   providers: [],
