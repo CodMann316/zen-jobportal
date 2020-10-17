@@ -1,3 +1,6 @@
+
+
+
 <div class="container mt-5 p-3 col-md-5 col-6 d-flex justify-content-center card shadow need-validation">
 
     <div oninput='confirmPass.setCustomValidity(confirmPass.value != pass.value ? "Passwords do not match." : "")'>
@@ -154,9 +157,18 @@
 
         <div *ngFor='let skill of skillNames'>
             <div *ngIf="skill.length > 0">
-                {{skill}}
-                <button (click)='removeSkill(skill)' class="align-right" class="btn-primary ">Remove <i
-                        class="fa fa-trash" aria-hidden="true"></i></button>
+                <ul>
+                    <li>
+                        {{skill}} 
+                        <div class="d-flex justify-content-end">
+                        <button (click)='removeSkill(skill)' class="align-right" class="btn-primary ">Remove <i
+                            class="fa fa-trash" aria-hidden="true"></i></button>
+                            </div>
+                    </li>
+                </ul>
+                
+                    
+               
             </div>
         </div>
 

@@ -8,10 +8,10 @@ import { SignupSeekerComponent } from './signup-seeker/signup-seeker.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {path:'home',component:AppComponent,pathMatch:'full'},
+ // {path:'home',component:AppComponent,pathMatch:'full'},
   {path:'login',component:LoginComponent,canActivate:[LoginGuard]},
-  {path:'employer-signup',component:SignupComponent},
-  {path:'seeker-signup',component:SignupSeekerComponent},
+  {path:'employer-signup',component:SignupComponent,canActivate:[LoginGuard]},
+  {path:'seeker-signup',component:SignupSeekerComponent,canActivate:[LoginGuard]},
   {path:'search',component:JobComponent}
 ];
 

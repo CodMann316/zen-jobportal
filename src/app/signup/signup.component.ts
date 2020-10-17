@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user.model';
+import { Employer } from '../model/employer.model';
 
 @Component({
   selector: 'app-signup',
@@ -7,28 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  user:{
-    userName:string,
-    password:string
-  }
 
-  employer = {
-      employerId:'',
-	    firstName:'',
-	    lastName:'',
-	    companyName:'',
-	    companyLocation:'',
-	    email:''
-  }
+  user: User = new User();
+  employer: Employer = new Employer();
 
-  signup() {
-
-    this.user.userName=this.employer.email
-  }
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  signup() {
+    console.log('SignUp clicked')
+    this.user.userName = this.employer.email
+  }
 }

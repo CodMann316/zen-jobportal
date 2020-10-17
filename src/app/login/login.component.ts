@@ -21,15 +21,14 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-
+    
     this.service.validateUser(this.user).subscribe(
       data => {
         this.coockie.set("userName", data.userName)
         this.coockie.set("type", data.type)
+        window.location.reload();
         this.router.navigate(['']);
-
-        //this.user = data
-        alert(data.password)
+        
       },
       error => {
         alert('invalid credentials, please try again')
@@ -37,16 +36,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
-
   validateUser() {
     alert('Available user is: ' + this.coockie.check("userName"))
-
   }
 
   ngOnInit(): void {
 
     // this.coockie.deleteAll('../')
-    if (this.service.isValidated)
+    if (this.service.isLoggedIn())
       alert('You already logged in')
   }
 

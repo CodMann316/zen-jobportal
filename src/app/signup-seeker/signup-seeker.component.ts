@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Education } from '../model/education.model';
 import { Seeker } from '../model/seeker.model';
 import { User } from '../model/user.model';
@@ -11,6 +11,13 @@ import { WorkExperience } from '../model/WorkExperience.model';
   styleUrls: ['./signup-seeker.component.css']
 })
 export class SignupSeekerComponent implements OnInit {
+
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+
+
 
   isWorkExperience:boolean=false;
 
@@ -69,9 +76,19 @@ export class SignupSeekerComponent implements OnInit {
     this.skillNames=this.skillNames.filter(element => !element.match(unwantedSkill))
   }
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
+    
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+
+
   }
 
 }

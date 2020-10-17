@@ -4,13 +4,18 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { SignupSeekerComponent } from './signup-seeker/signup-seeker.component';
 import { JobComponent } from './job/job.component';
 import {HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +24,21 @@ import { CookieService } from 'ngx-cookie-service';
     SignupComponent,
     SignupSeekerComponent,
     JobComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatStepperModule,
+    
+    HttpClientModule,
+    
+    BrowserAnimationsModule
     
   ],
   providers: [CookieService],
