@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { job } from '../model/job.model';
+import { Job } from '../model/job.model';
 
 @Component({
   selector: 'app-job',
@@ -8,7 +8,7 @@ import { job } from '../model/job.model';
 })
 export class JobComponent implements OnInit {
 
-  job:job=new job("Developer","Full Time");
+  job:Job=new Job("Developer","Full Time");
   
 
   constructor() { }

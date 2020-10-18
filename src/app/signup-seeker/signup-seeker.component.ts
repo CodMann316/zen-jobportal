@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Education } from '../model/education.model';
 import { Seeker } from '../model/seeker.model';
 import { User } from '../model/user.model';
 import { WorkExperience } from '../model/WorkExperience.model';
+
 
 @Component({
   selector: 'app-signup-seeker',
@@ -15,8 +16,6 @@ export class SignupSeekerComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-
-
 
 
   isWorkExperience:boolean=false;
@@ -47,20 +46,26 @@ export class SignupSeekerComponent implements OnInit {
   }
 
   addWorkExperience(){
+    document.getElementById("closeWork").click()
+
     this.workExperiences[this.workExperienceCount++]=this.workExperience;
   }
 
-  addEducation(){
-    this.educations[this.educationCount++]=this.education;
-    alert(this.education.city)
+  addEducation(inputEducation:Education){
+    this.educations.push(inputEducation);
+
+   // this.educations[this.educationCount++]=this.education;
+   this.education=new Education();
+    
+   document.getElementById("closeEdu").click()
   }
 
-  removeEduation(unwantedEducation){
-    this.educations=this.educations.filter(element => element != unwantedEducation)
+  removeEduation(unwantedEducation:Education){
+    this.educations=this.educations.filter(element => element.degree != unwantedEducation.degree)
   }
 
   addSkill(){
-    
+  
     this.skillNames.push(this.skillName)
     this.skillName=''
   }
@@ -74,6 +79,11 @@ export class SignupSeekerComponent implements OnInit {
     // }
 
     this.skillNames=this.skillNames.filter(element => !element.match(unwantedSkill))
+  }
+
+  isValid():boolean{
+    //console.log( 'Button ---'+(this.educations.length<=0 || this.skillNames.length<=0))
+    return this.educations.length<=0 || this.skillNames.length<=0
   }
 
   constructor(private _formBuilder: FormBuilder) { }

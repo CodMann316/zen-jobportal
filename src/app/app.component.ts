@@ -11,17 +11,29 @@ import { LoginService } from './login/login.service';
 })
 export class AppComponent implements OnInit{
 
-  
+  isRouterActivated:boolean=false;
+
   title = 'jobportal';
-  isLoggedIn = false;
+  
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
   constructor(private coockie: CookieService, private loginService: LoginService) {
-    this.isLoggedIn = loginService.isLoggedIn();
+    loginService.isLoggedIn();
   }
   ngOnInit(): void {
    
+  }
+
+
+  isLoggedIn():boolean{
+    console.log(this.loginService.isLoggedIn())
+    
+    return this.loginService.isLoggedIn();
+  }
+
+  getUserName(){
+    return this.loginService.getUserName();
   }
 
   logout() {

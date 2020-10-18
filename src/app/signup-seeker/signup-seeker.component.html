@@ -1,34 +1,40 @@
+<div class="container mt-5 p-3 col-md-4 col-8 d-flex justify-content-center card shadow need-validation">
 
-
-
-<div class="container mt-5 p-3 col-md-5 col-6 d-flex justify-content-center card shadow need-validation">
-
-    <div oninput='confirmPass.setCustomValidity(confirmPass.value != pass.value ? "Passwords do not match." : "")'>
+    <form ngNativeValidate (ngSubmit)='signup()'
+        oninput='confirmPass.setCustomValidity(confirmPass.value != pass.value ? "password doesnt match" : "")'>
 
         <h2 class="text-center">Sign Up</h2>
 
 
         <div class="form-group">
-            <label>First name</label> <input [(ngModel)]=seeker.firstName class="form-control" type="text" required>
-        </div>
-
-        <div class="form-group">
-            <label>Last name</label> <input [(ngModel)]=seeker.lastName class="form-control" type="email" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label> <input [(ngModel)]=seeker.email class="form-control" type="text" required>
-        </div>
-        <div class="form-group">
-            <label>Password</label> <input [(ngModel)]=user.password class="form-control" type="password" required>
-        </div>
-
-        <div class="form-group">
-            <label>Phone Number</label> <input [(ngModel)]=seeker.phoneNumber class="form-control" type="number"
+            <label>First name</label> <input [(ngModel)]=seeker.firstName name="fn" class="form-control" type="text"
                 required>
         </div>
 
         <div class="form-group">
-            <label>City</label> <input [(ngModel)]=seeker.city class="form-control" type="text" required>
+            <label>Last name</label> <input [(ngModel)]=seeker.lastName name="ln" class="form-control" type="text"
+                required>
+        </div>
+        <div class="form-group">
+            <label>Email</label> <input [(ngModel)]=seeker.email name="mail" class="form-control" type="text" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label> <input [(ngModel)]=user.password name="pass" class="form-control" type="password"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password</label> <input name="confirmPass" class="form-control" type="password" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label> <input [(ngModel)]=seeker.phoneNumber name="phoneNo" class="form-control"
+                type="number" required>
+        </div>
+
+        <div class="form-group">
+            <label>City</label> <input [(ngModel)]=seeker.city name="cityName" class="form-control" type="text"
+                required>
         </div>
 
         <br>
@@ -37,40 +43,51 @@
 
 
         <div class="border-top my-3"></div><br>
-        <h3>Education Details</h3><br>
+        <h2>Education Details</h2><br>
 
 
         <div *ngFor='let e of educations'>
             {{ e.degree}}
             {{e.university}}
-            <button class="align-right" class="btn-primary">Remove <i class="fa fa-trash"
+            <button class="align-right" (click)='removeEduation(e)' class="btn-primary">Remove <i class="fa fa-trash"
                     aria-hidden="true"></i></button>
         </div>
+        <div class="text-center">
+
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addEducation">Add
+                Education</button>
+        </div>
+        <!-- 
 
         <div class="form-group">
-            <label>Degree</label> <input [(ngModel)]=education.degree class="form-control" type="text" required>
+            <label>Degree</label> <input [(ngModel)]=education.degree name="inDegree" class="form-control" type="text"
+                required>
         </div>
 
         <div class="form-group">
-            <label>College or University</label> <input [(ngModel)]=education.university class="form-control"
+            <label>College or University</label> <input [(ngModel)]=education.university name="inUniversity"
+                class="form-control" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label>Field of Study </label> <input [(ngModel)]=education.field name="inField" class="form-control"
                 type="text" required>
         </div>
 
         <div class="form-group">
-            <label>Field of Study </label> <input [(ngModel)]=education.field class="form-control" type="text" required>
+            <label>City</label> <input [(ngModel)]=education.city name="inEduCity" class="form-control" type="text"
+                required>
         </div>
 
         <div class="form-group">
-            <label>City</label> <input [(ngModel)]=education.city class="form-control" type="text" required>
-        </div>
-
-        <div class="form-group">
-            <label>Year</label> <input [(ngModel)]=education.endDate class="form-control" type="date" required=required>
+            <label>Year</label> <input [(ngModel)]=education.endDate name="inYear" class="form-control" type="date"
+                required=required>
         </div>
 
         <br>
-        <button (click)='addEducation()' class="btn btn-primary rounded-pill form-control">Add Education</button>
-
+        <button (click)='addEducation(education)' class="btn btn-primary rounded-pill form-control">Add
+            Education</button>
+ -->
 
         <br>
         <br>
@@ -103,97 +120,269 @@
 
 
             <div class="border-top my-3"></div><br>
-            <h3>WorkExperience Details</h3><br>
+            <h2>WorkExperience Details</h2><br>
 
             <div *ngFor='let e of workExperiences'>
                 {{e.jobTitle}}
                 {{e.company}}
-                <button class="align-right" class="btn-primary">Remove <i class="fa fa-trash"
+                <button class="align-right" class="btn-primary"><i class="fa fa-trash"
                         aria-hidden="true"></i></button>
             </div>
 
-            <div class="form-group">
-                <label>Job Title</label> <input [(ngModel)]=workExperience.jobTitle class="form-control" type="text"
-                    required>
+            <div class="text-center">
+                
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addWorkExperience">Add
+                    WorkExperience</button>
             </div>
+            <!--            
+                <div class="form-group">
+                    <label>Job Title</label> <input [(ngModel)]=workExperience.jobTitle name="inWorkExperience"
+                        class="form-control" type="text" required>
+                </div>
 
-            <div class="form-group">
-                <label>Company</label> <input [(ngModel)]=workExperience.company class="form-control" type="text"
-                    required>
-            </div>
+                <div class="form-group">
+                    <label>Company</label> <input [(ngModel)]=workExperience.company name="inCompany"
+                        class="form-control" type="text" required>
+                </div>
 
-            <div class="form-group">
-                <label>City</label> <input [(ngModel)]=workExperience.city class="form-control" type="text" required>
-            </div>
-
-
-            <div class="form-group">
-                <label>Year</label> <input [(ngModel)]=workExperience.startDate class="form-control" type="date"
-                    required>
-            </div>
-
-            <div class="form-group">
-                <label>Description</label> <textarea [(ngModel)]=workExperience.description class="form-control"
-                    type="text"></textarea>
-            </div>
+                <div class="form-group">
+                    <label>City</label> <input [(ngModel)]=workExperience.city name="inWorkCity" class="form-control"
+                        type="text" required>
+                </div>
 
 
-            <br>
-            <button (click)='addWorkExperience()' class="btn btn-primary rounded-pill form-control">Add Work
-                Experience</button>
+                <div class="form-group">
+                    <label>Year</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
+                        class="form-control" type="date" required>
+                </div>
 
+                <div class="form-group">
+                    <label>Description</label> <textarea [(ngModel)]=workExperience.description name="textarea"
+                        class="form-control" type="text"></textarea>
+                </div>
+
+
+                <br>
+                <button (click)='addWorkExperience()' class="btn btn-primary rounded-pill form-control">Add Work
+                    Experience</button> -->
 
             <br>
             <br>
         </div>
-
 
 
 
 
 
         <div class="border-top my-3"></div><br>
-        <h3>Skills</h3><br>
+        <h2>Skills</h2><br>
 
         <div *ngFor='let skill of skillNames'>
             <div *ngIf="skill.length > 0">
                 <ul>
                     <li>
-                        {{skill}} 
-                        <div class="d-flex justify-content-end">
-                        <button (click)='removeSkill(skill)' class="align-right" class="btn-primary ">Remove <i
-                            class="fa fa-trash" aria-hidden="true"></i></button>
-                            </div>
+                        <button (click)='removeSkill(skill)' class="btn btn-primary"> <i class="fa fa-trash"
+                                aria-hidden="true"></i></button>
+                        {{skill}}
+                        <!-- <div class="d-flex justify-content-end">
+                           
+                        </div> -->
                     </li>
                 </ul>
-                
-                    
-               
+
+
+
             </div>
         </div>
 
-        <form ngNativeValidate (ngSubmit)='addSkill()' class="form-group">
+        <!-- <form ngNativeValidate  class="form-group"> -->
 
 
-            <div class="form-group">
-                <label>Skill Name</label> <input required [(ngModel)]=skillName [ngModelOptions]="{standalone:true}"
-                    class="form-control" type="text">
+        <div class="form-group">
+            <label>Skill Name</label> <input required [(ngModel)]=skillName name="skillNm" class="form-control"
+                type="text">
+        </div>
+
+        <br>
+
+
+        <div class="text-center ">
+
+            <input type="submit" (click)='addSkill()' name="inSkill" value="Add"
+                class="btn btn-primary rounded-pill form-control">
+
+        </div>
+
+
+        <br>
+        <br>
+
+        <!-- </fcorm> -->
+
+
+
+        <div class="border-top my-3"></div><br>
+
+        <div class="text-center ">
+
+            <input type="submit" [disabled]='isValid()' data-toggle="tooltip"
+                title="Please fill skill and education details" class="btn btn-primary rounded-pill form-control"
+                name="subMain" value="Register Now">
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="addEducation" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Education Details</h4>
             </div>
-
-            <br>
-            <input type="submit" (submit)='addSkill()' value="Add" class="btn btn-primary rounded-pill form-control">
-
-
-            <br>
-            <br>
-
-        </form>
+            <div class="modal-body">
 
 
 
+                <form (submit)='addEducation(education)' ngNativeValidate>
+
+                    <div class="form-group">
+                        <label>Degree</label> <input [(ngModel)]=education.degree name="inDegree" class="form-control"
+                            type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>College or University</label> <input [(ngModel)]=education.university name="inUniversity"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Field of Study </label> <input [(ngModel)]=education.field name="inField"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label> <input [(ngModel)]=education.city name="inEduCity" class="form-control"
+                            type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Year</label> <input [(ngModel)]=education.endDate name="inYear" class="form-control"
+                            type="date" required=required>
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary rounded-pill form-control"
+                        >Add Education</button>
+
+                </form>
 
 
-        <button (click)='signup()' class="btn btn-primary rounded-pill form-control">Sign In</button>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closeEdu" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="addWorkExperience" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Work Experience Details</h4>
+            </div>
+            <div class="modal-body">
+
+
+
+                <form (submit)='addWorkExperience()' ngNativeValidate>
+
+
+                    <div class="form-group">
+                        <label>Job Title</label> <input [(ngModel)]=workExperience.jobTitle name="inWorkExperience"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company</label> <input [(ngModel)]=workExperience.company name="inCompany"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label> <input [(ngModel)]=workExperience.city name="inWorkCity"
+                            class="form-control" type="text" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Year</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
+                            class="form-control" type="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label> <textarea [(ngModel)]=workExperience.description name="textarea"
+                            class="form-control" type="text"></textarea>
+                    </div>
+
+                    <br>
+
+                    <button type="submit" class="btn btn-primary rounded-pill form-control">Add Work Experience</button>
+
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="closeWork" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
     </div>
 </div>

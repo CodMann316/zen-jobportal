@@ -1,0 +1,89 @@
+/* NAV BAR */
+
+.navbar-nav li
+{
+padding: 0 20px
+}
+.navbar-nav li a
+{
+	float: right;
+	text-align: left;
+}
+.navbar-nav li a:hover
+{
+	color: #007bff!important;
+}
+
+.navbar
+{
+	background:whitesmoke;
+}
+.navbar-toggler
+{
+	border: none!important;
+}
+.nav-link
+{
+	color:black;
+	font-weight: 700;
+	font-size: 18px;
+}
+.nav-link li{
+  width: 400px;
+  height: 40px;
+  background-color: #007bff;
+}
+
+.search{
+  top: 20%;
+}
+
+/* Main */
+.main img{
+    /* background-size: cover;
+    width: 95%; */
+     /* Set rules to fill background */
+     min-height: 100%;
+     min-width: 1024px;
+     
+     /* Set up proportionate scaling */
+     width: 100%;
+     height: auto;
+     
+     /* Set up positioning */
+     position: absolute;
+    
+    }
+    .centered {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        height: 50px;
+        padding-right: 200px;
+       
+      }
+    .centered h1{
+        font-size: 70px;
+        font-weight: 10%;
+        font-style: normal;
+        padding-right: 20px;
+    }
+   h4{
+      padding-bottom: 50px;
+    }
+   .centered p{
+       font-style: italic;
+       font-size: 40px;
+       padding-bottom: 10px;
+   } 
+   
+   .container{
+       padding-top: 45%;
+   }
+  .nav-item{
+    padding-left: 20px;
+  }
+ 
+  

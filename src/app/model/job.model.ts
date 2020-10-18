@@ -1,4 +1,4 @@
-export class job{
+export class Job{
     constructor(
 
         public jobId?:string,
