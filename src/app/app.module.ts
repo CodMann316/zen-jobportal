@@ -16,6 +16,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { SearchComponent } from './search/search.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SearchComponent } from './search/search.component';
     SignupSeekerComponent,
     JobComponent,
     SearchComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,

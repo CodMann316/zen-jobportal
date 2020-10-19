@@ -113,7 +113,11 @@
     <app-search [hidden]='isRouterActivated'></app-search>
     <router-outlet (activate)='isRouterActivated=true' (deactivate)='isRouterActivated=false'></router-outlet>
   </div>
-
+  
+  <div style="margin-top: 20%;">
+    
+    <app-search-result></app-search-result>
+  </div>
 
 
   <!-- Cards  -->

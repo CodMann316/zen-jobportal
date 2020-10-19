@@ -18,13 +18,12 @@ export class AppComponent implements OnInit{
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private coockie: CookieService, private loginService: LoginService) {
+  constructor(private cookie: CookieService, private loginService: LoginService) {
     loginService.isLoggedIn();
   }
   ngOnInit(): void {
    
   }
-
 
   isLoggedIn():boolean{
     console.log(this.loginService.isLoggedIn())

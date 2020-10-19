@@ -14,18 +14,18 @@ export class LoginComponent implements OnInit {
   user: User = new User();
   constructor(
     private service: LoginService,
-    private coockie: CookieService,
+    private cookie: CookieService,
     private router:Router) { }
 
-  msg = 'User IS ' + this.coockie.get('userName')
+  msg = 'User IS ' + this.cookie.get('userName')
 
   login() {
 
     
     this.service.validateUser(this.user).subscribe(
       data => {
-        this.coockie.set("userName", data.userName)
-        this.coockie.set("type", data.type)
+        this.cookie.set("userName", data.userName)
+        this.cookie.set("type", data.type)
         window.location.reload();
         this.router.navigate(['']);
         
@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
   }
 
   validateUser() {
-    alert('Available user is: ' + this.coockie.check("userName"))
+    alert('Available user is: ' + this.cookie.check("userName"))
   }
 
   ngOnInit(): void {
 
-    // this.coockie.deleteAll('../')
+    // this.cookie.deleteAll('../')
     if (this.service.isLoggedIn())
       alert('You already logged in')
   }

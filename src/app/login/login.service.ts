@@ -19,7 +19,7 @@ export class LoginService {
 
   url = this.baseUrl+'/assets/users.json'
 
-  constructor(private coockie: CookieService, private http: HttpClient) {
+  constructor(private cookie: CookieService, private http: HttpClient) {
     console.log('login service created')
   }
 
@@ -28,20 +28,20 @@ export class LoginService {
   }
 
   isLoggedIn() {
-    return this.coockie.check("userName");
+    return this.cookie.check("userName");
   }
 
   getUserType() {
-    return this.coockie.get("type");
+    return this.cookie.get("type");
   }
 
   getUserName() {
-    return this.coockie.get("userName");
+    return this.cookie.get("userName");
   }
 
   logout() {
     // remove user from local storage to log user out
-    this.coockie.deleteAll('../')
+    this.cookie.deleteAll('../')
     // localStorage.removeItem('currentUser');
     // this.currentUserSubject.next(null);
   }
