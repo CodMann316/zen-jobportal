@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Global } from '../model/global';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -24,6 +25,7 @@ export class LoginService {
   }
 
   validateUser(user: User) {
+    //return this.http.post<User>(Global.url+"/signIn",user);
     return this.http.get<User>(this.url)
   }
 
@@ -40,7 +42,6 @@ export class LoginService {
   }
 
   logout() {
-    // remove user from local storage to log user out
     this.cookie.deleteAll('../')
     // localStorage.removeItem('currentUser');
     // this.currentUserSubject.next(null);

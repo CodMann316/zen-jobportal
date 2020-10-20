@@ -18,158 +18,151 @@
 
 
 
-  <!-- Nav - Bar -->
-  <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <!-- Image and text -->
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          <img src="assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""
-            loading="lazy">
-          CarrerSolutions
-        </a>
-      </nav>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item active bg-light">
-            <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active bg-light">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item active bg-light">
-            <a class="nav-link" href="#">Find Jobs</a>
-          </li>
-          <li class="nav-item dropdown active bg-light">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Recutires
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">CS</a>
-              <a class="dropdown-item" href="#">ME</a>
-              <a class="dropdown-item" href="#">CE</a>
-            </div>
-          </li>
-          <li><a class="nav-link" href="#">Post a Job</a></li>
-          <li><button type="button" class="btn btn-success">Want a Job</button></li>
-
-
-
-
-          <li [hidden]='isLoggedIn()' class="nav-item active bg-light">
-            <a class="nav-link" routerLink='login'>Sign In</a>
-          </li>
-          <li [hidden]='isLoggedIn()' class="nav-item active bg-light">
-            <a class="nav-link" routerLink='seeker-signup'>Sign Up</a>
-          </li>
-
-
-          <li [hidden]='!isLoggedIn()' class="nav-item active bg-light">
-
-            <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user" aria-hidden="true"></i> {{getUserName()}}
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Dashboard</a>
-                <a class="dropdown-item" (click)='logout()' routerLink="">LogOut</a>
-              </div>
-            </div>
-
-
-          </li>
-
-        </ul>
-      </div>
+<!-- Nav - Bar -->
+<div class="header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        CarrerSolutions
+      </a>
     </nav>
-  </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active bg-light">
+          <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active bg-light">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item active bg-light">
+          <a class="nav-link" href="#">Find Jobs</a>
+        </li>
+        <li class="nav-item dropdown active bg-light">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Recutires
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">CS</a>
+            <a class="dropdown-item" href="#">ME</a>
+            <a class="dropdown-item" href="#">CE</a>
+          </div>
+        </li>
+        <li><a class="nav-link" href="#">Post a Job</a></li>
+        <li><button type="button" class="btn btn-success">Want a Job</button></li>
 
 
 
-  <!-- Main -->
-  <section class="main ">
-    <img src="assets\images\home.jpg">
-  
 
-  
-    <div class="centered">
-      <h1>Your Dream Job Is Waiting...</h1><br>
-      <p>You Connect, We Display</p>
-
-    
-    </div>
-  </section>
-  
-  <div style="margin-top: 20%;" >
-    <!-- <app-search [hidden]='isRouterActivated' ></app-search> -->
-    <router-outlet (activate)='isRouterActivated=true' (deactivate)='isRouterActivated=false'></router-outlet>
-  </div>
-
-  <!-- Cards  -->
-  <div class="container">
-    <div class="card-deck">
-      <div class="card">
-        <img src="assets\images\c1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets\images\c2.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets\images\c3.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
+        <li [hidden]='isLoggedIn()' class="nav-item active bg-light">
+          <a class="nav-link" routerLink='login'>Sign In</a>
+        </li>
+        <li [hidden]='isLoggedIn()' class="nav-item active bg-light">
+          <a class="nav-link" routerLink='seeker-signup'>Sign Up</a>
+        </li>
 
 
-  <!-- Footer -->
-  <footer class="page-footer font-small unique-color-dark pt-4">
+        <li [hidden]='!isLoggedIn()' class="nav-item active bg-light">
 
-    <!-- Footer Elements -->
-    <div class="containers">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user" aria-hidden="true"></i> {{getUserName()}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="goToDashboard()">Dashboard</a>
+              <a class="dropdown-item" href="#">Edit Profile</a>
+              <a class="dropdown-item" (click)='logout()' routerLink="">LogOut</a>
+            </div>
+          </div>
 
-      <!-- Call to action -->
-      <ul class="list-unstyled list-inline text-center py-2">
-        <li class="list-inline-item">
-          <h5 class="mb-1">Register for free</h5><br>
-          <h5 class="mb-1">Career Advice -
-            Browse Jobs -
-            Browse Companies - Many More</h5>
+
         </li>
 
       </ul>
-      <!-- Call to action -->
-
     </div>
-    <!-- Footer Elements -->
+  </nav>
+</div>
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> CareerSolution , Job Protal</a>
+
+
+<!-- Main -->
+<section class="main ">
+  <img src="assets\images\home.jpg">
+
+  <div class="centered">
+    <h1>Your Dream Job Is Waiting...</h1><br>
+    <p>You Connect, We Display</p>
+  </div>
+</section>
+
+<div style="margin-top: 20%;">
+  <!-- <app-search [hidden]='isRouterActivated' ></app-search> -->
+  <router-outlet (activate)='isRouterActivated=true' (deactivate)='isRouterActivated=false'></router-outlet>
+</div>
+
+<!-- Cards  -->
+<div class="container">
+  <div class="card-deck">
+    <div class="card">
+      <img src="assets\images\c1.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+          content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
     </div>
-    <!-- Copyright -->
+    <div class="card">
+      <img src="assets\images\c2.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets\images\c3.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+          content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  </footer>
-  <!-- Footer -->
+<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark pt-4">
+
+  <!-- Footer Elements -->
+  <div class="containers">
+
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5><br>
+        <h5 class="mb-1">Career Advice -
+          Browse Jobs -
+          Browse Companies - Many More</h5>
+      </li>
+    </ul>
+    <!-- Call to action -->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> CareerSolution , Job Protal</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>

@@ -250,8 +250,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Year</label> <input [(ngModel)]=education.endDate name="inYear" class="form-control"
+                        <label>Start date</label> <input [(ngModel)]=education.startDate name="inYear" class="form-control"
                             type="date" required=required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>End date</label> <input [(ngModel)]=education.endDate name="endYear" class="form-control"
+                            type="date">
                     </div>
 
                     <br>
@@ -318,7 +323,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Year</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
+                        <label>Start date</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
+                            class="form-control" type="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>End date</label> <input [(ngModel)]=workExperience.endDate name="inWorkYear"
                             class="form-control" type="date" required>
                     </div>
 

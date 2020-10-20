@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginService } from './login/login.service';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,12 @@ import { LoginService } from './login/login.service';
   // template:' <app-signup-seeker></app-signup-seeker>',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-  isRouterActivated:boolean=false;
+  isRouterActivated: boolean = false;
 
   title = 'jobportal';
-  
+
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
@@ -22,16 +22,15 @@ export class AppComponent implements OnInit{
     loginService.isLoggedIn();
   }
   ngOnInit(): void {
-   
   }
 
-  isLoggedIn():boolean{
+  isLoggedIn(): boolean {
     console.log(this.loginService.isLoggedIn())
-    
+
     return this.loginService.isLoggedIn();
   }
 
-  getUserName(){
+  getUserName() {
     return this.loginService.getUserName();
   }
 
@@ -40,12 +39,17 @@ export class AppComponent implements OnInit{
     window.location.reload();
   }
 
+  goToDashboard() {
+    if (this.loginService.getUserType().match('seeker'))
+      return '/seekerDashboard'
+    else
+      return '/employerDashboard'
+}
 
 
 
 
 
-  
 
 
 }

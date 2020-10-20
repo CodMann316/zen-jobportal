@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../model/user.model';
-import { LoginService } from './login.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',

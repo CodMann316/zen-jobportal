@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-dashboard.component';
 import { LoginGuard } from './guards/login.guard';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -18,9 +19,9 @@ const routes: Routes = [
     path: 'home', component: SearchComponent, children: [
       { path: 'searchResult', component: SearchResultComponent },
       { path: 'searchResultCandidate', component: SearchResultCandidatesComponent },
-
     ]
   },
+  { path: 'seekerDashboard', component: SeekerDashboardComponent},
   { path: 'employer-signup', component: SignupComponent, canActivate: [LoginGuard] },
   { path: 'seeker-signup', component: SignupSeekerComponent, canActivate: [LoginGuard] },
   { path: 'search', component: JobComponent }

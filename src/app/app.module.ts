@@ -18,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
 import { SearchComponent } from './search/search.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchResultCandidatesComponent } from './search-result-candidates/search-result-candidates.component';
+import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SearchResultCandidatesComponent } from './search-result-candidates/sear
     SearchComponent,
     SearchResultComponent,
     SearchResultCandidatesComponent,
+    SeekerDashboardComponent,
   ],
   imports: [
     BrowserModule,
