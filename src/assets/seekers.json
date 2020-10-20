@@ -1,0 +1,23 @@
+[
+    {
+        "firstName": "Rohan",
+        "lastName": "Rohan",
+        "email": "Rohan@test.com",
+        "skills":["java","Html","C#"],
+        "phoneNumber": "09798889798"
+    },
+    {
+        "firstName": "Rohan",
+        "lastName": "Rohan",
+        "email": "Rohan@test.com",
+        "skills":["java","Html","C#"],
+        "phoneNumber": "09798889798"
+    },
+    {
+        "firstName": "Rohan",
+        "lastName": "Rohan",
+        "email": "Rohan@test.com",
+        "skills":["java","Html","C#"],
+        "phoneNumber": "09798889798"
+    }
+]

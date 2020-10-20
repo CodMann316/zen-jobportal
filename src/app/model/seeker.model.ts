@@ -1,3 +1,6 @@
+import { Education } from './education.model';
+import { WorkExperience } from './WorkExperience.model';
+
 export class Seeker{
     constructor(
         public seekerId?:string,
@@ -6,6 +9,9 @@ export class Seeker{
 		public city?:string,
 		public email?:string,
 		public phoneNumber?:string,
+		public skills?:string[],
+		public educations?:Education[],
+		public workExperiences?:WorkExperience[]
     ){
 
     }

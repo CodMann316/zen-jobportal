@@ -18,9 +18,6 @@
 
 
 
-
-<body>
-
   <!-- Nav - Bar -->
   <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -110,15 +107,9 @@
   </section>
   
   <div style="margin-top: 20%;" >
-    <app-search [hidden]='isRouterActivated'></app-search>
+    <!-- <app-search [hidden]='isRouterActivated' ></app-search> -->
     <router-outlet (activate)='isRouterActivated=true' (deactivate)='isRouterActivated=false'></router-outlet>
   </div>
-  
-  <div style="margin-top: 20%;">
-    
-    <app-search-result></app-search-result>
-  </div>
-
 
   <!-- Cards  -->
   <div class="container">

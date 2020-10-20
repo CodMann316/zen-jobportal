@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { Global } from '../model/global';
 import { Job } from '../model/job.model';
+import { Seeker } from '../model/seeker.model';
 
 @Injectable({
   providedIn: 'root'

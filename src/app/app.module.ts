@@ -17,6 +17,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { SearchComponent } from './search/search.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchResultCandidatesComponent } from './search-result-candidates/search-result-candidates.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     JobComponent,
     SearchComponent,
     SearchResultComponent,
+    SearchResultCandidatesComponent,
   ],
   imports: [
     BrowserModule,

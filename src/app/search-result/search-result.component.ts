@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Job } from '../model/job.model';
 import { JobService } from '../services/job.service';
 
@@ -9,25 +10,35 @@ import { JobService } from '../services/job.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  jobs:Job[];
+
+  jobs: Job[];
   selectedId;
 
-  constructor(private jobService:JobService) { }
-
-  ngOnInit(): void {  
-    this.jobService.getAllJobs().subscribe(
-      data=>this.jobs=data
-    );
+  constructor(private jobService: JobService,
+    private route:ActivatedRoute) {
   }
 
-  getJob():Job{
-    return this.jobs.find( e=> e.jobId.match(this.selectedId))
+  ngOnInit(): void {
+    this.route.queryParams
+    .subscribe(
+      param =>{
+        alert(param.title+" "+param.location)
+        this.jobService.getAllJobs().subscribe(
+          data => this.jobs = data
+        );
+      }
+    )
+    
   }
 
-  jobApply(jobId){
-      this.jobService.applyForJob(jobId).subscribe(
-        result => alert('Is applied Successful:'+result)
-      )
+  getJob(): Job {
+    return this.jobs.find(e => e.jobId.match(this.selectedId))
+  }
+
+  jobApply(jobId) {
+    this.jobService.applyForJob(jobId).subscribe(
+      result => alert('Is applied Successful:' + result)
+    )
   }
 
 

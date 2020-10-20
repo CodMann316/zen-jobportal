@@ -14,16 +14,16 @@
       </tr>
     </thead>
     <!-- <tfoot>
-              <tr>
-                  <th>#</th>
-                  <th>Job Title</th>
-                  <th>Location</th>
-                  <th>Applicant Name</th> 
-                  <th>Required Skills</th>
-                  <th>Salary</th>
-                  <th> </th>
-              </tr>
-          </tfoot> -->
+                <tr>
+                    <th>#</th>
+                    <th>Job Title</th>
+                    <th>Location</th>
+                    <th>Applicant Name</th> 
+                    <th>Required Skills</th>
+                    <th>Salary</th>
+                    <th> </th>
+                </tr>
+            </tfoot> -->
     <tbody>
 
       <tr *ngFor='let job of jobs'>
@@ -78,7 +78,6 @@
             <td>{{getJob().jobDescription}}</td>
           </tr>
         </table>
-
 
         <button (click)="jobApply(getJob().jobId)" class="btn btn-primary rounded-pill form-control">Apply Now</button>
 
