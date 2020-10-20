@@ -50,23 +50,76 @@
       </div>
       <div class="modal-body">
 
-        <h2>{{ getSeeker().firstName }}</h2>
-        <!-- <h3><i class="fa fa-map-marker" aria-hidden="true"></i> {{ getSeeker().location }}</h3>
-        <h4><i class="fa fa-building" aria-hidden="true"></i> {{getSeeker().company}}</h4> -->
 
-        <table class="table">
-          <tr>
-            <th>Contact Mail:</th>
-            <td>{{getSeeker().email}}</td>
-          </tr>
-          <tr>
-            <th>Contact Phone Number:</th>
-            <td>{{getSeeker().phoneNumber}}</td>
-          </tr>
-         
-        </table>
+        <h3> <i>Contact Info</i></h3>
+          <table class="table">
+            <tr>
+              <th>Telephone:</th>
+              <td>{{getSeeker().phoneNumber}}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td>{{getSeeker().email}}</td>
+            </tr>
+            <tr>
+              <th>Skills:</th>
+              <td>{{getSeeker().workExperiences}}</td>
+            </tr>
+          </table>
 
-        <!-- <button (click)="jobApply(getSeeker().jobId)" class="btn btn-primary rounded-pill form-control">Apply Now</button> -->
+          <h3><i>Work Experience</i></h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <!-- <th>#</th> -->
+                <th scope="col">Job Title</th>
+                <th scope="col">Organization</th>
+                <th scope="col">City</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let e of getSeeker().workExperiences'>
+                <!-- <td>1</td> -->
+                <td>{{e.jobTitle}}</td>
+                <td>{{e.company}}</td>
+                <td>{{e.city}}</td>
+                <td>{{e.startDate}}</td>
+                <td>{{e.endDate}}</td>
+                <td><p>
+                  {{e.description}}
+                  </p></td>
+              </tr>
+            
+            
+            </tbody>
+          </table>
+          <h3><i>Educational Qualifications</i></h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <!-- <th>#</th> -->
+                <th scope="col">Degree</th>
+                <th scope="col">University</th>
+                <th scope="col">Percentage</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let e of getSeeker().educations">
+                <!-- <td>1</td> -->
+                <td>{{e.degree}}</td>
+                <td>{{e.university}}</td>
+                <td>{{e.percentage}}</td>
+                <td>{{e.startDate}}</td>
+                <td>{{e.endDate}}</td>
+              </tr>
+            </tbody>
+          </table>
+      <a href="#" class="btn btn-primary">Download Resume</a>
 
       </div>
       <div class="modal-footer">
@@ -76,3 +129,23 @@
 
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
