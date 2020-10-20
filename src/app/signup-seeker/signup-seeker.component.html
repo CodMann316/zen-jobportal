@@ -5,7 +5,6 @@
 
         <h2 class="text-center">Sign Up</h2>
 
-
         <div class="form-group">
             <label>First name</label> <input [(ngModel)]=seeker.firstName name="fn" class="form-control" type="text"
                 required>
@@ -45,53 +44,39 @@
         <div class="border-top my-3"></div><br>
         <h2>Education Details</h2><br>
 
+        <div>
 
-        <div *ngFor='let e of educations'>
-            {{ e.degree}}
-            {{e.university}}
-            <button class="align-right" (click)='removeEduation(e)' class="btn-primary">Remove <i class="fa fa-trash"
-                    aria-hidden="true"></i></button>
+            <div >
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>University</th>
+                            <!-- <th>Percentage</th> -->
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let e of educations'>
+                            <td>{{e.degree}}</td>
+                            <td>{{e.university}}</td>
+                            <td><button class="align-right" (click)='removeEduation(e)' class="btn-primary"><i class="fa fa-trash"
+                                aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
         </div>
-        <div class="text-center">
+        <div class="text-center mt-3">
 
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addEducation">Add
                 Education</button>
         </div>
-        <!-- 
-
-        <div class="form-group">
-            <label>Degree</label> <input [(ngModel)]=education.degree name="inDegree" class="form-control" type="text"
-                required>
-        </div>
-
-        <div class="form-group">
-            <label>College or University</label> <input [(ngModel)]=education.university name="inUniversity"
-                class="form-control" type="text" required>
-        </div>
-
-        <div class="form-group">
-            <label>Field of Study </label> <input [(ngModel)]=education.field name="inField" class="form-control"
-                type="text" required>
-        </div>
-
-        <div class="form-group">
-            <label>City</label> <input [(ngModel)]=education.city name="inEduCity" class="form-control" type="text"
-                required>
-        </div>
-
-        <div class="form-group">
-            <label>Year</label> <input [(ngModel)]=education.endDate name="inYear" class="form-control" type="date"
-                required=required>
-        </div>
-
-        <br>
-        <button (click)='addEducation(education)' class="btn btn-primary rounded-pill form-control">Add
-            Education</button>
- -->
-
         <br>
         <br>
-
 
 
 
@@ -116,60 +101,40 @@
 
         <div *ngIf='isWorkExperience'>
 
-
-
-
             <div class="border-top my-3"></div><br>
             <h2>WorkExperience Details</h2><br>
 
-            <div *ngFor='let e of workExperiences'>
-                {{e.jobTitle}}
-                {{e.company}}
-                <button class="align-right" class="btn-primary"><i class="fa fa-trash"
-                        aria-hidden="true"></i></button>
+            <div >
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Organization</th>
+                            <th>Remove</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let e of workExperiences'>
+                            <td>{{e.jobTitle}}</td>
+                            <td>{{e.company}}</td>
+                            <td><button class="align-right" (click)='removeWorkExperience(e)' class="btn-primary"><i class="fa fa-trash"
+                                aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
 
-            <div class="text-center">
+            <div class="text-center mt-3">
                 
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addWorkExperience">Add
                     WorkExperience</button>
             </div>
-            <!--            
-                <div class="form-group">
-                    <label>Job Title</label> <input [(ngModel)]=workExperience.jobTitle name="inWorkExperience"
-                        class="form-control" type="text" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Company</label> <input [(ngModel)]=workExperience.company name="inCompany"
-                        class="form-control" type="text" required>
-                </div>
-
-                <div class="form-group">
-                    <label>City</label> <input [(ngModel)]=workExperience.city name="inWorkCity" class="form-control"
-                        type="text" required>
-                </div>
-
-
-                <div class="form-group">
-                    <label>Year</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
-                        class="form-control" type="date" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Description</label> <textarea [(ngModel)]=workExperience.description name="textarea"
-                        class="form-control" type="text"></textarea>
-                </div>
-
-
-                <br>
-                <button (click)='addWorkExperience()' class="btn btn-primary rounded-pill form-control">Add Work
-                    Experience</button> -->
-
             <br>
             <br>
         </div>
-
 
 
 
@@ -184,9 +149,6 @@
                         <button (click)='removeSkill(skill)' class="btn btn-primary"> <i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                         {{skill}}
-                        <!-- <div class="d-flex justify-content-end">
-                           
-                        </div> -->
                     </li>
                 </ul>
 
@@ -293,11 +255,8 @@
                     </div>
 
                     <br>
-                    <button type="submit" class="btn btn-primary rounded-pill form-control"
-                        >Add Education</button>
-
+                    <button type="submit" class="btn btn-primary rounded-pill form-control">Add Education</button>
                 </form>
-
 
 
             </div>
@@ -340,7 +299,6 @@
             <div class="modal-body">
 
 
-
                 <form (submit)='addWorkExperience()' ngNativeValidate>
 
 
@@ -359,7 +317,6 @@
                             class="form-control" type="text" required>
                     </div>
 
-
                     <div class="form-group">
                         <label>Year</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
                             class="form-control" type="date" required>
@@ -369,11 +326,8 @@
                         <label>Description</label> <textarea [(ngModel)]=workExperience.description name="textarea"
                             class="form-control" type="text"></textarea>
                     </div>
-
                     <br>
-
                     <button type="submit" class="btn btn-primary rounded-pill form-control">Add Work Experience</button>
-
                 </form>
 
 

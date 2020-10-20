@@ -36,7 +36,7 @@ export class JobService {
   applyForJob(jobId):Observable<any>{
     let params:HttpParams=new HttpParams();
     params.set("jobId",jobId);
-    params.set("userName",this.login.getUserName());
+    params.set("userName" ,encodeURIComponent(this.login.getUserName()) );
     return this.http.post<boolean>(Global.url+'/applyForJob',{params})
   }
 
