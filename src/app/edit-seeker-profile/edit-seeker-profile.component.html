@@ -1,0 +1,59 @@
+<button class="btn btn-primary" data-toggle="modal"
+data-target="#editmodal">Edit Profile</button>
+
+<div id="editmodal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title">Edit Profile</h2>
+<button type="button" class="close" data-dismiss="modal" data-backdrop="static" data-keyboard="false">&times;</button>
+</div>
+<div class="modal-body">
+<form id="GFG"> 
+<table class="table">
+<tr>
+<th>First Name:</th>
+<td><input type="text" disabled></td>
+</tr>
+<tr>
+<th>Last Name:</th>
+<td><input type="text" disabled></td>
+</tr>
+<tr>
+<th>Email:</th>
+<td><input type="email" disabled></td>
+</tr>
+<tr>
+<th>Contact Number:</th>
+<td><input type="number" disabled></td>
+</tr>
+<tr>
+<th>Education</th>
+<td><input type="text" disabled></td>
+</tr>
+<tr>
+<th>Skills</th>
+<td><input type="text" disabled></td>
+</tr>
+</table>            
+<button type="submit"  class="btn btn-primary" data-dismiss="modal" data-backdrop="static" data-keyboard="false">Save Changes</button>
+</form> 
+
+<br><br> 
+
+<input onclick="disable()" type="button" 
+class="slide-toggle btn" value="Disable Changes"
+id="myButton1"/> 
+<input onclick="enable()" type="button" 
+class="slide-toggle btn" value="Enable Changes"
+id="ssdf"/> 
+</div>
+<div class="modal-footer">
+<button type="button"  class="btn btn-default" data-dismiss="modal" data-backdrop="static" data-keyboard="false">Close</button>
+</div>
+</div>
+
+</div>
+</div>

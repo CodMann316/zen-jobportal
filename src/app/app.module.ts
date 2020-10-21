@@ -19,6 +19,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchResultCandidatesComponent } from './search-result-candidates/search-result-candidates.component';
 import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-dashboard.component';
+import { EditSeekerProfileComponent } from './edit-seeker-profile/edit-seeker-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-da
     SearchResultComponent,
     SearchResultCandidatesComponent,
     SeekerDashboardComponent,
+    EditSeekerProfileComponent,
   ],
   imports: [
     BrowserModule,
