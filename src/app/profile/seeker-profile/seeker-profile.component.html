@@ -1,0 +1,332 @@
+<div id="seekerDetail" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">User Profile</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form (submit)='save()' ngNativeValidate>
+                <div class="modal-body">
+
+                    <h3> <i>Contact Info</i></h3>
+                    <table class="table">
+                        <tr>
+                            <th>First Name:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='getSeeker().firstName' class="form-control" name="fname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='getSeeker().lastName' class="form-control" name="lname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Phone Number:</th>
+                            <td>
+                                <input type="number" [(ngModel)]='getSeeker().phoneNumber' class="form-control" name="pNo"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>City:</th>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" [(ngModel)]='getSeeker().city' class="form-control" name="city"
+                                    required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>
+                                <input type="email" [(ngModel)]='getSeeker().email' class="form-control" name="fname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Skills:</th>
+                            <td>
+                                <button type="button" class=" btn btn-primary" data-toggle="modal"
+                                    data-target="#manageSkills">Manage Skills</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h3><i>Work Experience</i></h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <!-- <th>#</th> -->
+                                <th scope="col">Job Title</th>
+                                <th scope="col">Organization</th>
+                                <th scope="col">City</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let e of getSeeker().workExperiences'>
+                                <!-- <td>1</td> -->
+                                <td>{{e.jobTitle}}</td>
+                                <td>{{e.company}}</td>
+                                <td>{{e.city}}</td>
+                                <td>{{e.startDate}}</td>
+                                <td>{{e.endDate}}</td>
+                                <td>
+                                    <p>
+                                        {{e.description}}
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <i class="fa fa-plus-square btn" data-toggle="modal" data-target="#addWorkExperience"
+                                aria-hidden="true"></i>
+
+
+                        </tbody>
+                    </table>
+                    <h3><i>Educational Qualifications</i></h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <!-- <th>#</th> -->
+                                <th scope="col">Degree</th>
+                                <th scope="col">University</th>
+                                <th scope="col">Percentage</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let e of getSeeker().educations">
+                                <!-- <td>1</td> -->
+                                <td>{{e.degree}}</td>
+                                <td>{{e.university}}</td>
+                                <td>{{e.percentage}}</td>
+                                <td>{{e.startDate}}</td>
+                                <td>{{e.endDate}}</td>
+                            </tr>
+                            <i class="fa fa-plus-square btn" data-toggle="modal" data-target="#addEducation"
+                                aria-hidden="true"></i>
+
+                        </tbody>
+                    </table>
+                    <a href="#" class="btn btn-primary">Download Resume</a>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeProfile" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="saveProfile" class="btn btn-default" >Save</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="addEducation" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Education Details</h4>
+                <button type="button" (click)='modalFocus()' class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+
+
+                <form (submit)='addEducation(education)' ngNativeValidate>
+
+                    <div class="form-group">
+                        <label>Degree</label> <input [(ngModel)]=education.degree name="inDegree" class="form-control"
+                            type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>College or University</label> <input [(ngModel)]=education.university name="inUniversity"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Field of Study </label> <input [(ngModel)]=education.field name="inField"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label> <input [(ngModel)]=education.city name="inEduCity" class="form-control"
+                            type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start date</label> <input [(ngModel)]=education.startDate name="inYear"
+                            class="form-control" type="date" required=required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>End date</label> <input [(ngModel)]=education.endDate name="endYear" class="form-control"
+                            type="date">
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary rounded-pill form-control">Add Education</button>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closeEdu" (click)='modalFocus()' class="btn btn-default"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="addWorkExperience" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Work Experience Details</h4>
+                <button type="button" (click)='modalFocus()' class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+
+                <form (submit)='addWorkExperience()' ngNativeValidate>
+
+
+                    <div class="form-group">
+                        <label>Job Title</label> <input [(ngModel)]=workExperience.jobTitle name="inWorkExperience"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company</label> <input [(ngModel)]=workExperience.company name="inCompany"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label> <input [(ngModel)]=workExperience.city name="inWorkCity"
+                            class="form-control" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start date</label> <input [(ngModel)]=workExperience.startDate name="inWorkYear"
+                            class="form-control" type="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>End date</label> <input [(ngModel)]=workExperience.endDate name="inWorkYear"
+                            class="form-control" type="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label> <textarea [(ngModel)]=workExperience.description name="textarea"
+                            class="form-control" type="text"></textarea>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary rounded-pill form-control">Add Work Experience</button>
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="closeWork" type="button" (click)='modalFocus()' class="btn btn-default"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="manageSkills" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Manage Skills</h4>
+                <button type="button" (click)='modalFocus()' class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <input type="text" class="form-control" [(ngModel)]='skillName'>
+                <span><button type="button" (click)='addSkill()'
+                        class="btn btn-primary form-control">Add</button></span>
+
+                <ul class="mt-2 list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                        *ngFor='let skill of getSeeker().skills'>
+                        {{skill}}
+                        <span class="badge badge-primary badge-pill">
+
+                            <i class="fa fa-trash" (click)='removeSkill(skill)' aria-hidden="true"></i>
+                        </span>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button id="closeWork" type="button" (click)='modalFocus()' class="btn btn-default"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

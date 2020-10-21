@@ -35,16 +35,16 @@ export class JobService {
   }
 
   applyForJob(jobId):Observable<any>{
-    let params:HttpParams=new HttpParams();
-    params.set("jobId",jobId);
-    params.set("email" ,this.login.getUserName());
-    return this.http.post<boolean>(Global.url+'/applyForJob',{params})
+    // let params:HttpParams=new HttpParams();
+    // params.set("jobId",jobId);
+    // params.set("email" ,this.login.getUserName());
+    return this.http.get<boolean>(Global.url+'/applyForJob/'+jobId+'/'+this.login.getUserName)
   }
 
   getAppliedJobs():Observable<any>{
-    let params:HttpParams=new HttpParams();
-    params.set("email" ,this.login.getUserName());
-    return this.http.post<Job[]>(Global.url+'/applyForJob',{params})
+    // let params:HttpParams=new HttpParams();
+    // params.set("email" ,this.login.getUserName());
+    return this.http.get<Job[]>(Global.url+'/getAppliedJobs/'+this.login.getUserName)
   }
 
 }

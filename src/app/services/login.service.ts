@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 import { Global } from '../model/global';
 import { User } from '../model/user.model';
 
@@ -9,7 +10,7 @@ import { User } from '../model/user.model';
 })
 export class LoginService {
 
-  baseUrl:string="http://localhost:4200"
+  baseUrl: string = "http://localhost:4200"
 
   fakeUsers: User[] = [
     new User('ABC', 'abc', 'seeker'),
@@ -18,7 +19,7 @@ export class LoginService {
     new User('html', 'html', 'employer'),
   ]
 
-  url = this.baseUrl+'/assets/users.json'
+  url = this.baseUrl + '/assets/users.json'
 
   constructor(private cookie: CookieService, private http: HttpClient) {
     console.log('login service created')
@@ -33,8 +34,22 @@ export class LoginService {
     return this.cookie.check("userName");
   }
 
-  getUserType() {
+  getUserType(): string {
     return this.cookie.get("type");
+  }
+
+  isSeerker(): boolean {
+    if (this.getUserType().match('seeker'))
+      return true;
+    else
+      return false;
+  }
+
+  isEmployer(): boolean {
+    if (this.getUserType().match('employer'))
+      return true;
+    else
+      return false;
   }
 
   getUserName() {
@@ -42,9 +57,21 @@ export class LoginService {
   }
 
   logout() {
-    this.cookie.deleteAll('../')
-    // localStorage.removeItem('currentUser');
-    // this.currentUserSubject.next(null);
+    this.cookie.deleteAll('../');
+  }
+
+  getProfile():Observable<any> {
+    if (this.isSeerker())
+      return this.http.get('/seekerDashboard/' + this.getUserName())
+    else if (this.isEmployer())
+      return this.http.get('/employerDashboard/' + this.getUserName())
+  }
+
+  updateProfile(profile):Observable<any> {
+    if (this.isSeerker())
+      return this.http.post('/seekerDashboard/' + this.getUserName(),[profile])
+    else if (this.isEmployer())
+      return this.http.post('/employerDashboard/' + this.getUserName(),[profile])
   }
 
 

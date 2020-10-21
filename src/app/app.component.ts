@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { SeekerProfileComponent } from './profile/seeker-profile/seeker-profile.component';
 import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  // template:' <app-signup-seeker></app-signup-seeker>',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
 
   isRouterActivated: boolean = false;
-
+  editProfile:SeekerProfileComponent=new SeekerProfileComponent(); 
   title = 'jobportal';
 
   firstFormGroup: FormGroup;
@@ -46,6 +46,9 @@ export class AppComponent implements OnInit {
       return '/employerDashboard'
 }
 
+editUserProfile(){
+  this.editProfile.open();
+}
 
 
 

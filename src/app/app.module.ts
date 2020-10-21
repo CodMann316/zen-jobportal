@@ -19,6 +19,8 @@ import { SearchComponent } from './search/search.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchResultCandidatesComponent } from './search-result-candidates/search-result-candidates.component';
 import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-dashboard.component';
+import { SeekerProfileComponent } from './profile/seeker-profile/seeker-profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-da
     SearchResultComponent,
     SearchResultCandidatesComponent,
     SeekerDashboardComponent,
+    SeekerProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,9 @@ import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-da
     
     HttpClientModule,
     
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
+    NgbModule
     
   ],
   providers: [CookieService],

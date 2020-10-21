@@ -12,12 +12,13 @@ export class SignupService {
   constructor(private http: HttpClient,private httpParam:HttpParams) { }
 
   sigupSeeker(seeker: Seeker, user: User) {
-    return this.http.post<boolean>(Global.url + '/signUp',[seeker,user])
+    return this.http.post<boolean>(Global.url + '/signUp',[seeker])
   }
 
   isMailAvailable(mail:string){
-    let params:HttpParams=new HttpParams();
-    params.set("email",encodeURIComponent(mail));
-    return this.http.get<boolean>(Global.url+'/isMailAvailable',{params})
+    // let params:HttpParams=new HttpParams();
+    // params.set("email",encodeURIComponent(mail));
+    return this.http.get<boolean>(Global.url+'/isMailAvailable/'+mail)
+    // return this.http.get<boolean>(Global.url+'/isMailAvailable',{params})
   }
 }
