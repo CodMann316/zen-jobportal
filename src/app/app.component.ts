@@ -12,7 +12,7 @@ import { LoginService } from './services/login.service';
 export class AppComponent implements OnInit {
 
   isRouterActivated: boolean = false;
-  editProfile:SeekerProfileComponent=new SeekerProfileComponent(); 
+  editProfile:SeekerProfileComponent;
   title = 'jobportal';
 
   firstFormGroup: FormGroup;
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   constructor(private cookie: CookieService, private loginService: LoginService) {
     loginService.isLoggedIn();
+    this.editProfile=new SeekerProfileComponent(loginService); 
   }
   ngOnInit(): void {
   }
