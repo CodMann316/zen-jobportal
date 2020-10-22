@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         
       },
       error => {
-        alert('invalid credentials, please try again')
+        alert(error.msg +' invalid credentials, please try again')
       }
     );
   }

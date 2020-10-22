@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
+import { Employer } from '../model/employer.model';
 import { Global } from '../model/global';
+import { Seeker } from '../model/seeker.model';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -21,13 +24,13 @@ export class LoginService {
 
   url = this.baseUrl + '/assets/users.json'
 
-  constructor(private cookie: CookieService, private http: HttpClient) {
+  constructor(private cookie: CookieService, private http: HttpClient,private route:Router) {
     console.log('login service created')
   }
 
   validateUser(user: User) {
-    //return this.http.post<User>(Global.url+"/signIn",user);
-    return this.http.get<User>(this.url)
+    return this.http.post<User>(Global.url+"/signIn",user);
+    // return this.http.get<User>(this.url)
   }
 
   isLoggedIn() {
@@ -58,20 +61,24 @@ export class LoginService {
 
   logout() {
     this.cookie.deleteAll('../');
+    // window.location.href='/home'
+    // this.route.navigate([''])
   }
 
   getProfile():Observable<any> {
     if (this.isSeerker())
-      return this.http.get('/seekerDashboard/' + this.getUserName())
-    else if (this.isEmployer())
-      return this.http.get('/employerDashboard/' + this.getUserName())
+      return this.http.get<Seeker>(Global.url+'/seekerDashboard/' + this.getUserName())
+    else if (this.isEmployer()){
+      console.log("FOUND Employer Profile")
+      return this.http.get<Employer>(Global.url+'/employerDashboard/' + this.getUserName())
+    }
   }
 
   updateProfile(profile):Observable<any> {
     if (this.isSeerker())
-      return this.http.post('/seekerDashboard/' + this.getUserName(),[profile])
+      return this.http.post(Global.url+'/seekerDashboard/' + this.getUserName(),[profile])
     else if (this.isEmployer())
-      return this.http.post('/employerDashboard/' + this.getUserName(),[profile])
+      return this.http.post(Global.url+'/employerDashboard/' + this.getUserName(),[profile])
   }
 
 

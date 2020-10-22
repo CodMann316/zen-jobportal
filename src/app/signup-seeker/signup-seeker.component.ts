@@ -52,12 +52,13 @@ export class SignupSeekerComponent implements OnInit {
   workExperiences: WorkExperience[] = [];
 
   signup() {
+
     this.seeker.educations = this.educations
     this.seeker.workExperiences = this.workExperiences
     this.seeker.skills = this.skillNames
     this.user.userName = this.seeker.email;
     this.user.type = "seeker";
-    
+
     this.signupService.isMailAvailable(this.user.userName).subscribe(
       result => {
         if (result)

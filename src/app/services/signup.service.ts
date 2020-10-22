@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Global } from '../model/global';
 import { Seeker } from '../model/seeker.model';
@@ -9,10 +9,10 @@ import { User } from '../model/user.model';
 })
 export class SignupService {
 
-  constructor(private http: HttpClient,private httpParam:HttpParams) { }
+  constructor(private http: HttpClient) { }
 
   sigupSeeker(seeker: Seeker, user: User) {
-    return this.http.post<boolean>(Global.url + '/signUp',[seeker])
+    return this.http.post<boolean>(Global.url + '/signUp',seeker  )
   }
 
   isMailAvailable(mail:string){

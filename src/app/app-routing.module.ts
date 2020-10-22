@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { EmployerDashboardComponent } from './dashboard/employer-dashboard/employer-dashboard.component';
+import { JobApplicantsComponent } from './dashboard/employer-dashboard/job-applicants/job-applicants.component';
 import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-dashboard.component';
 import { LoginGuard } from './guards/login.guard';
 import { JobComponent } from './job/job.component';
@@ -21,7 +23,9 @@ const routes: Routes = [
       { path: 'searchResultCandidate', component: SearchResultCandidatesComponent },
     ]
   },
-  { path: 'seekerDashboard', component: SeekerDashboardComponent},
+  { path: 'seekerDashboard', component: SeekerDashboardComponent },
+  { path: 'employerDashboard', component: EmployerDashboardComponent },
+  { path: 'employerDashboard/jobApplicants/:id/:jobTitle', component: JobApplicantsComponent },
   { path: 'employer-signup', component: SignupComponent, canActivate: [LoginGuard] },
   { path: 'seeker-signup', component: SignupSeekerComponent, canActivate: [LoginGuard] },
   { path: 'search', component: JobComponent }

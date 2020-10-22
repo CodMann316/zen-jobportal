@@ -21,6 +21,8 @@ import { SearchResultCandidatesComponent } from './search-result-candidates/sear
 import { SeekerDashboardComponent } from './dashboard/seeker-dashboard/seeker-dashboard.component';
 import { SeekerProfileComponent } from './profile/seeker-profile/seeker-profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmployerDashboardComponent } from './dashboard/employer-dashboard/employer-dashboard.component';
+import { JobApplicantsComponent } from './dashboard/employer-dashboard/job-applicants/job-applicants.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SearchResultCandidatesComponent,
     SeekerDashboardComponent,
     SeekerProfileComponent,
+    EmployerDashboardComponent,
+    JobApplicantsComponent,
   ],
   imports: [
     BrowserModule,

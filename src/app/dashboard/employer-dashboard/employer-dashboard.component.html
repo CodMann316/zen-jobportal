@@ -1,0 +1,239 @@
+<div class="container card" style="margin-top: -10%;">
+    <div class="card-header" style="margin-left: -2%;margin-right: -2%;">
+        <h1>Dashboard
+
+
+            <button class="btn btn-primary d-flex justify-content-end" (click)='isPostJob=true' data-toggle="modal" data-target="#postJob">Post
+                Job</button>
+
+        </h1>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Manage posted jobs</h3>
+
+        <div class="container">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <!-- <th>#</th> -->
+                        <th>Job Title</th>
+                        <th>Location</th>
+                        <th>Required Skills</th>
+                        <th>Salary</th>
+                        <th>Status</th>
+                        <th>Applicants</th>
+                        <th>Edit Job</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor='let job of jobs'>
+                        <!-- <td>1</td> -->
+                        <td>{{job.jobTitle}}</td>
+                        <td>{{job.location}}</td>
+                        <td>{{job.skills}}</td>
+                        <td>{{job.salary |currency}}</td>
+                        <td>{{job.status}}</td>
+                        <td>
+                            <a href="\employerDashboard\jobApplicants\{{job.jobId}}\{{job.jobTitle}}">
+                                <button class="btn btn-primary">
+                                    View Applicants
+                                </button>
+                            </a>
+                        </td>
+                        <td> <button class="btn btn-primary" (click)='editJob(job.jobId)' data-toggle="modal"
+                                data-target="#postJob"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- <router-outlet></router-outlet> -->
+
+<div id="jobDetails" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Job Details</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <h2>{{ getJob().jobTitle }}</h2>
+                <h3><i class="fa fa-map-marker" aria-hidden="true"></i> {{ getJob().location }}</h3>
+                <h4><i class="fa fa-building" aria-hidden="true"></i> {{getJob().company}}</h4>
+
+                <table class="table">
+                    <tr>
+                        <th>Type of job:</th><span>e.g full-time,part-time,internship</span>
+                        <td>{{getJob().jobType}}</td>
+                    </tr>
+                    <tr>
+                        <th>Required Skills:</th>
+                        <td>{{getJob().skills}}</td>
+                    </tr>
+                    <tr>
+                        <th>Salary:</th>
+                        <td>{{getJob().salary}}</td>
+                    </tr>
+                    <tr>
+                        <th>Description:</th>
+                        <td>{{getJob().jobDescription}}</td>
+                    </tr>
+                </table>
+
+                <button class="btn btn-primary rounded-pill form-control">Remove Job Post</button>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closeEdu" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="postJob" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Job Details</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form (submit)='postJob()' ngNativeValidate>
+                <div class="modal-body">
+
+                    <table class="table">
+                        <tr>
+                            <th>Job Title:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='job.jobTitle' class="form-control" name="fname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Location:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='job.location' class="form-control" name="lname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Company:</th>
+                            <td>
+                                <input disabled type="text" [ngModel]='company' class="form-control" name="pNo" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Salary:</th>
+                            <td>
+                                <div class="form-group">
+                                    <input type="number" [(ngModel)]='job.salary' class="form-control" name="city"
+                                        required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Job Type:</th>
+                            <td>
+                                <select [(ngModel)]='job.jobType' class="form-control">
+                                    <option>Full-Time</option>
+                                    <option>Part-Time</option>
+                                    <option>Internship</option>
+                                </select>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Skills:</th>
+                            <td>
+                                <button type="button" class=" btn btn-primary" data-toggle="modal"
+                                    data-target="#manageSkills">Manage Skills</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <label>Description</label> <textarea [(ngModel)]=job.jobDescription name="textarea"
+                            class="form-control" type="text"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeProfile" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button [hidden]='isPostJob' type="submit" id="saveProfile" class="btn btn-default">Post Job</button>
+                    <button [hidden]='!isPostJob' type="submit" id="saveProfile" class="btn btn-default">Update Job</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="manageSkills" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Manage Skills</h4>
+                <button type="button" (click)='modalFocus()' class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <div class="modal-body">
+
+                <form (submit)='addSkill()' ngNativeValidate>
+                    <input type="text" class="form-control" [(ngModel)]='skillName' minlength=1 required>
+                    <span><button type="submit" class="btn btn-primary form-control">Add</button></span>
+                </form>
+                <ul class="mt-2 list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                        *ngFor='let skill of skills'>
+                        {{skill}}
+                        <span class="badge badge-primary badge-pill">
+
+                            <i class="fa fa-trash" (click)='removeSkill(skill)' aria-hidden="true"></i>
+                        </span>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button id="closeWork" type="button" (click)='modalFocus()' class="btn btn-default"
+                    data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
