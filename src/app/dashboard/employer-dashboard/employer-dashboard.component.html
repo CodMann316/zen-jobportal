@@ -3,7 +3,7 @@
         <h1>Dashboard
 
 
-            <button class="btn btn-primary d-flex justify-content-end" (click)='isPostJob=true' data-toggle="modal" data-target="#postJob">Post
+            <button class="btn btn-primary d-flex justify-content-end" (click)='postNewJob()' data-toggle="modal" data-target="#postJob">Post
                 Job</button>
 
         </h1>
@@ -157,7 +157,7 @@
                         <tr>
                             <th>Job Type:</th>
                             <td>
-                                <select [(ngModel)]='job.jobType' class="form-control">
+                                <select [(ngModel)]='job.jobType' name="jobType" class="form-control">
                                     <option>Full-Time</option>
                                     <option>Part-Time</option>
                                     <option>Internship</option>
@@ -181,8 +181,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="closeProfile" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button [hidden]='isPostJob' type="submit" id="saveProfile" class="btn btn-default">Post Job</button>
-                    <button [hidden]='!isPostJob' type="submit" id="saveProfile" class="btn btn-default">Update Job</button>
+                    <button [hidden]='!isPostJob' type="submit" id="saveProfile" class="btn btn-default">Post Job</button>
+                    <button [hidden]='isPostJob' type="submit" id="saveProfile" class="btn btn-default">Update Job</button>
                 </div>
             </form>
         </div>
@@ -213,7 +213,7 @@
             <div class="modal-body">
 
                 <form (submit)='addSkill()' ngNativeValidate>
-                    <input type="text" class="form-control" [(ngModel)]='skillName' minlength=1 required>
+                    <input type="text" class="form-control" [(ngModel)]='skillName' name='skill' minlength=1 required>
                     <span><button type="submit" class="btn btn-primary form-control">Add</button></span>
                 </form>
                 <ul class="mt-2 list-group">

@@ -10,29 +10,46 @@ import { JobService } from '../services/job.service';
 })
 export class SearchResultComponent implements OnInit {
 
-
   jobs: Job[];
-  selectedId;
+  selectedId:string="0";
 
   constructor(private jobService: JobService,
-    private route:ActivatedRoute) {
+    private route: ActivatedRoute) {
+    this.getAllJobs()
   }
 
   ngOnInit(): void {
+  }
+
+  getAllJobs() {
     this.route.queryParams
-    .subscribe(
-      param =>{
-        alert(param.title+" "+param.location)
-        this.jobService.getAllJobs().subscribe(
-          data => this.jobs = data
-        );
-      }
-    )
-    
+      .subscribe(
+        param => {
+          alert(param.title + " " + param.location)
+          this.jobService.getAllJobs().subscribe(
+            data => {
+              this.jobs = data
+              // this.showDATA()
+            }
+          );
+        }
+      )
+
+  }
+
+  showDATA() {
+    // alert("DB DATA"+JSON.stringify(this.jobs))
   }
 
   getJob(): Job {
-    return this.jobs.find(e => e.jobId.match(this.selectedId))
+    if(!(this.selectedId==="0")){
+      console.log("View details clicked!")
+      return this.jobs.find(e => e.jobId===this.selectedId)
+    }
+     else{
+
+       return new Job()
+     }
   }
 
   jobApply(jobId) {

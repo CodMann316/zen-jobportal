@@ -61,6 +61,9 @@ export class LoginService {
 
   logout() {
     this.cookie.deleteAll('../');
+    this.cookie.deleteAll('/home');
+    alert(this.getUserName())
+
     // window.location.href='/home'
     // this.route.navigate([''])
   }
@@ -73,12 +76,14 @@ export class LoginService {
       return this.http.get<Employer>(Global.url+'/employerDashboard/' + this.getUserName())
     }
   }
-
+  getEmployerProfile():Observable<Employer> {
+      return this.http.get<Employer>(Global.url+'/employerDashboard/' + this.getUserName())
+  }
   updateProfile(profile):Observable<any> {
     if (this.isSeerker())
-      return this.http.post(Global.url+'/seekerDashboard/' + this.getUserName(),[profile])
+      return this.http.patch(Global.url+'/seekerDashboard/' + this.getUserName(),profile)
     else if (this.isEmployer())
-      return this.http.post(Global.url+'/employerDashboard/' + this.getUserName(),[profile])
+      return this.http.post(Global.url+'/employerDashboard/' + this.getUserName(),profile)
   }
 
 

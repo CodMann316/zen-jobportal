@@ -6,7 +6,7 @@ export class Job{
 		public salary?:string,
         public location?:string,
         public company?:string,
-        public skills?:string[],
+        public skills?:any[],
         public jobDescription?:string,
         public status?:string
     ){

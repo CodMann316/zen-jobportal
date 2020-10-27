@@ -13,15 +13,16 @@ declare var $: any;
 })
 export class SeekerProfileComponent implements OnInit {
 
-  seeker: Seeker = {
-    firstName: 'rohan',
-    lastName: 'Shravage',
-    email: 'rvs@asd.com',
-    phoneNumber: '123123',
-    skills: ['Html', 'C#'],
-    educations:[],
-    workExperiences:[]
-  }
+  seeker: Seeker=new Seeker() ;
+  //  {
+  //   firstName: 'rohan',
+  //   lastName: 'Shravage',
+  //   email: 'rvs@asd.com',
+  //   phoneNumber: '123123',
+  //   skills: ['Html', 'C#'],
+  //   educations:[],
+  //   workExperiences:[]
+  // }
 
   constructor(private loginService:LoginService){}
 
@@ -38,6 +39,14 @@ export class SeekerProfileComponent implements OnInit {
   @ViewChild("seekerDetails") seekerModal;
 
   ngOnInit(): void {
+    this.loginService.getProfile().subscribe(
+      data=> {
+        this.seeker=data
+      },
+      error =>{
+        console.log("Error "+error)
+      }
+    )
     // this.seeker.skills = this.getSeeker().skills
   }
 
@@ -85,7 +94,8 @@ export class SeekerProfileComponent implements OnInit {
   }
 
   save(){
-    
+    //  this.seeker.skills=["JAVA","html"]
+    // console.log("CHANGED DATA "+JSON.stringify(this.seeker))
     this.loginService.updateProfile(this.seeker).subscribe(
       data=>{
         this.seeker=data;

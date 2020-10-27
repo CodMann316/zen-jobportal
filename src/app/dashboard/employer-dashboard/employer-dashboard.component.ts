@@ -18,32 +18,35 @@ export class EmployerDashboardComponent implements OnInit {
   skills: string[] = [];
   job: Job = new Job();
   selectedId: string;
-  jobs: Job[] = [{
-    jobId: '102',
-    jobTitle: 'JAVA Deve',
-    company: 'zensar',
-    location: 'pune'
-  }];
+  jobs: Job[] = [];
   constructor(private jobService: JobService,private loginService: LoginService) { }
 
   ngOnInit(): void {
+  
+    this.jobService.getPostedJobs().subscribe(
+      data => {
+        this.jobs = data
+        console.log("HEllo "+JSON.stringify(data))
+      },
+      error =>{
+        console.log("Error ",error)
+      }
+    )
+
     this.loginService.getProfile().subscribe(
       data=>{
         this.company=data.companyName
+        console.log(this.company);
       },
       error =>{
-        console.log("Error WHAT",error)
+        console.log("Error ",error)
       }
-      
-    )
-    this.jobService.getPostedJobs().subscribe(
-      data => this.jobs = data
-
     )
   }
 
   getJob() {
-    return this.jobs.find(e => e.jobId.match(this.selectedId))
+    return this.job
+    //return this.jobs.find(e => e.jobId.match(this.selectedId))
   }
 
   modalFocus() {
@@ -60,8 +63,17 @@ export class EmployerDashboardComponent implements OnInit {
     this.skills = this.skills.filter(element => !element.match(unwantedSkill))
   }
 
+  postNewJob(){
+    this.isPostJob=true;
+    this.job=new Job();
+  }
+
   postJob() {
     this.job.status="open"
+    // this.job.skills=[]
+    this.job.skills=[
+      {skillName:"c"}
+    ]
     this.jobService.postJob(this.job).subscribe(
       data =>{
         if(data)
@@ -75,7 +87,7 @@ export class EmployerDashboardComponent implements OnInit {
   editJob(jobId){
     this.isPostJob=false
     this.job.company=this.company
-    this.job=this.jobs.find(e => e.jobId.match(jobId))
+    this.job=this.jobs.find(e => e.jobId===jobId)
   }
 
   updateJob(){

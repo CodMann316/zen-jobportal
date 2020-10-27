@@ -23,6 +23,7 @@ import { SeekerProfileComponent } from './profile/seeker-profile/seeker-profile.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployerDashboardComponent } from './dashboard/employer-dashboard/employer-dashboard.component';
 import { JobApplicantsComponent } from './dashboard/employer-dashboard/job-applicants/job-applicants.component';
+import { EmployerProfileComponent } from './profile/employer-profile/employer-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { JobApplicantsComponent } from './dashboard/employer-dashboard/job-appli
     SeekerProfileComponent,
     EmployerDashboardComponent,
     JobApplicantsComponent,
+    EmployerProfileComponent,
   ],
   imports: [
     BrowserModule,

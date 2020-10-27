@@ -17,9 +17,8 @@ export class JobService {
 
   }
 
-  getAllJobs(){
-    //return this.http.get<Job[]>(Global.url+'/getAllJobs')
-    return this.http.get<Job[]>(Global.url+'/assets/jobs.json')
+  getAllJobs():Observable<any>{
+    return this.http.get<Job[]>(Global.url+'/getAllJobs')
   }
   
   getJobById(jobId:string):Observable<any>{
@@ -38,19 +37,16 @@ export class JobService {
     // let params:HttpParams=new HttpParams();
     // params.set("jobId",jobId);
     // params.set("email" ,this.login.getUserName());
-    return this.http.get<boolean>(Global.url+'/applyForJob/'+jobId+'/'+this.login.getUserName)
+    return this.http.get<boolean>(Global.url+'/applyForJob/'+jobId+'/'+this.login.getUserName())
   }
 
   getAppliedJobs():Observable<any>{
-    // let params:HttpParams=new HttpParams();
-    // params.set("email" ,this.login.getUserName());
-    return this.http.get<Job[]>(Global.url+'/getAppliedJobs/'+this.login.getUserName)
+    return this.http.get<Job[]>(Global.url+'/getAppliedJobs/'+this.login.getUserName())
   }
 
   getPostedJobs():Observable<any>{
-    // let params:HttpParams=new HttpParams();
-    // params.set("email" ,this.login.getUserName());
-    return this.http.get<Job[]>(Global.url+'/getPostedJobs/'+this.login.getUserName)
+
+    return this.http.get<Job[]>(Global.url+'/getPostedJobs/'+this.login.getUserName())
   }
 
   getJobApplicants(jobId:string):Observable<any>{
@@ -58,11 +54,16 @@ export class JobService {
   }
 
   postJob(job:Job){
-    return this.http.post<boolean>(Global.url+'/postJob',job)
+    console.log()
+    return this.http.post<boolean>(Global.url+'/postJob/'+this.login.getUserName(),job)
   }
 
   updateJob(job:Job){
     return this.http.post<boolean>(Global.url+'/updateJob',job)
   }
+
+cancelJobApplication(jobId):Observable<any>{
+  return this.http.delete<boolean>(Global.url+'/cancelJobApplication/'+jobId+'/'+this.login.getUserName())
+}
 
 }

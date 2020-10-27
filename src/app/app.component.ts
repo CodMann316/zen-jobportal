@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { EmployerProfileComponent } from './profile/employer-profile/employer-profile.component';
 import { SeekerProfileComponent } from './profile/seeker-profile/seeker-profile.component';
 import { LoginService } from './services/login.service';
 
@@ -12,7 +13,9 @@ import { LoginService } from './services/login.service';
 export class AppComponent implements OnInit {
 
   isRouterActivated: boolean = false;
-  editProfile:SeekerProfileComponent;
+  editProfile: SeekerProfileComponent;
+  editEmployerProfile: EmployerProfileComponent;
+
   title = 'jobportal';
 
   firstFormGroup: FormGroup;
@@ -20,13 +23,19 @@ export class AppComponent implements OnInit {
 
   constructor(private cookie: CookieService, private loginService: LoginService) {
     loginService.isLoggedIn();
-    this.editProfile=new SeekerProfileComponent(loginService); 
+    if (loginService.isEmployer()){
+      console.log('Employer Profile INIT')
+      this.editEmployerProfile = new EmployerProfileComponent(loginService);
+    }
+    else{
+      console.log('Seeker Profile INIT')
+      this.editProfile = new SeekerProfileComponent(loginService);
+    }
   }
   ngOnInit(): void {
   }
 
   isLoggedIn(): boolean {
-    console.log(this.loginService.isLoggedIn())
 
     return this.loginService.isLoggedIn();
   }
@@ -45,11 +54,19 @@ export class AppComponent implements OnInit {
       return '/seekerDashboard'
     else
       return '/employerDashboard'
-}
+  }
 
-editUserProfile(){
-  this.editProfile.open();
-}
+  editUserProfile() {
+
+    if (this.loginService.isEmployer()){
+      console.log("employer profile")
+      this.editEmployerProfile.open();
+    }
+    else{
+      this.editProfile.open();
+      console.log("Seeker profile")
+    }
+  }
 
 
 

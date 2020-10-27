@@ -1,0 +1,67 @@
+
+<div id="employerDetail" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">User Profile</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form (submit)='save()' ngNativeValidate>
+                <div class="modal-body">
+
+                    <h3> <i>Contact Info</i></h3>
+                    <table class="table">
+                        <tr>
+                            <th>First Name:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='getEmployer().firstName' class="form-control" name="fname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='getEmployer().lastName' class="form-control" name="lname"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Company Name:</th>
+                            <td>
+                                <input type="text" [(ngModel)]='getEmployer().companyName' class="form-control" name="cName"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Company Location:</th>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" [(ngModel)]='getEmployer().companyLocation' class="form-control" name="city"
+                                    required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>
+                                <input type="email" [(ngModel)]='getEmployer().email' class="form-control" name="fname"
+                                    required>
+                            </td>
+                        </tr>
+                        
+                    </table>
+
+                   
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeProfile" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="saveProfile" class="btn btn-default" >Save</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

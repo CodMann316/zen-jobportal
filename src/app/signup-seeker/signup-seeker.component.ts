@@ -45,7 +45,7 @@ export class SignupSeekerComponent implements OnInit {
   education: Education = new Education();
   educations: Education[] = [];
 
-  skillName: string;
+  skillName: string='';
   skillNames: string[] = [];
 
   workExperience: WorkExperience = new WorkExperience();
@@ -55,7 +55,8 @@ export class SignupSeekerComponent implements OnInit {
 
     this.seeker.educations = this.educations
     this.seeker.workExperiences = this.workExperiences
-    this.seeker.skills = this.skillNames
+    // this.skillNames.forEach(newSkill=> this.seeker.skills.push(newSkill) )
+    this.seeker.skills=this.skillNames
     this.user.userName = this.seeker.email;
     this.user.type = "seeker";
 

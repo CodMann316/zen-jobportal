@@ -9,7 +9,7 @@ export class Seeker{
 		public email?:string,
 		public password?:string,
 		public phoneNumber?:string,
-		public skills?:string[],
+		public skills?:any[],
 		public educations?:Education[],
 		public workExperiences?:WorkExperience[]
     ){}
