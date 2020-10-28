@@ -26,7 +26,10 @@ export class JobApplicantsComponent implements OnInit {
 
       this.jobTitle=params.jobTitle
       this.jobService.getJobApplicants(params.id).subscribe(
-        data => this.seekers = data
+        data =>{
+          console.log("Applicants "+JSON.stringify(data))
+          this.seekers = data
+        } 
       )
     })
   }

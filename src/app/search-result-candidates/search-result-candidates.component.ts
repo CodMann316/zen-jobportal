@@ -10,26 +10,54 @@ import { SearchService } from '../services/search.service';
 })
 export class SearchResultCandidatesComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private searchService:SearchService) { }
+  constructor(private route: ActivatedRoute, private searchService: SearchService) { }
 
-  skills: string[]=[];
+  skills: string[] = [];
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       param => {
         this.skills = decodeURIComponent(param.skills).split(',')
-        
-       this.searchService.searchForCandidate(this.skills).subscribe(
-          data => this.seekers=data
+
+        //  this.searchService.searchForCandidate(this.skills).subscribe(
+        //     data => this.seekers=data
+        //   );
+        this.searchService.getAllSeekers().subscribe(
+          data => {
+            // alert(this.skills[0]==='')
+            if (!(this.skills[0] === '')) {
+              alert("IN SKILLS")
+              for (let index = 0; index < data.length; index++) {
+                for (let index2 = 0; index2 < data[index].skills.length; index2++) {
+                  this.skills.forEach(
+                    skill => {
+                      if (data[index].skills[index2].skillName.includes(skill)) {
+                        this.seekers.push(data[index])
+                      }
+                    }
+                  )
+                }
+              }
+            } else {
+
+              this.seekers = data
+            }
+
+          }
         );
       }
     )
-    }
+  }
 
   seekers: Seeker[] = [];
-  selectedMail: string;
+  selectedMail: string = "";
 
   getSeeker(): Seeker {
-    return this.seekers.find(e => e.email.match(this.selectedMail))
+    if (!(this.selectedMail === "")){
+      // alert("Findind")
+      return this.seekers.find(e => e.email.match(this.selectedMail))
+    }
+    else
+      return new Seeker()
   }
 
   // jobApply(jobId) {

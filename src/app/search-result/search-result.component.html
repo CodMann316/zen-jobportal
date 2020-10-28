@@ -31,7 +31,12 @@
         <td>{{job.jobTitle}}</td>
         <td>{{job.location}}</td>
         <td>{{job.company}}</td>
-        <td>{{job.skills}}</td>
+        <td>
+          <ng-container *ngFor='let skill of job.skills'>
+            {{skill.skillName}},
+          </ng-container>
+          <!-- <div *ngFor='let skill of job.skills'>{{skill.skillName}},</div> -->
+        </td>
         <td>{{job.salary |currency}}</td>
         <td> <button class="btn btn-primary" (click)='selectedId=job.jobId' data-toggle="modal"
             data-target="#jobDetails">View Details</button>
@@ -67,7 +72,13 @@
           </tr>
           <tr>
             <th>Required Skills:</th>
-            <td>{{getJob().skills}}</td>
+            <td>
+              <ng-container *ngFor='let skill of getJob().skills'>
+                {{skill.skillName}},
+              </ng-container>
+              <!-- <div *ngFor='let skill of getJob().skills'>{{skill.skillName}},</div> -->
+              <!-- {{getJob().skills}} -->
+            </td>
           </tr>
           <tr>
             <th>Salary:</th>

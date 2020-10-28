@@ -60,7 +60,7 @@ export class EmployerDashboardComponent implements OnInit {
 
   removeSkill(unwantedSkill: string) {
     alert(unwantedSkill)
-    this.skills = this.skills.filter(element => !element.match(unwantedSkill))
+    this.skills = this.skills.filter(element => !(element===unwantedSkill))
   }
 
   postNewJob(){
@@ -70,10 +70,9 @@ export class EmployerDashboardComponent implements OnInit {
 
   postJob() {
     this.job.status="open"
-    // this.job.skills=[]
-    this.job.skills=[
-      {skillName:"c"}
-    ]
+    this.job.skills=this.skills
+    this.job.company=this.company;
+    console.log("POSTING JOB "+JSON.stringify(this.job))
     this.jobService.postJob(this.job).subscribe(
       data =>{
         if(data)
@@ -86,8 +85,13 @@ export class EmployerDashboardComponent implements OnInit {
 
   editJob(jobId){
     this.isPostJob=false
+    
     this.job.company=this.company
     this.job=this.jobs.find(e => e.jobId===jobId)
+    this.skills=[]
+    this.job.skills.forEach(e=>{
+      this.skills.push(e.skillName)
+    }) 
   }
 
   updateJob(){

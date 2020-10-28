@@ -50,7 +50,7 @@ export class JobService {
   }
 
   getJobApplicants(jobId:string):Observable<any>{
-    return this.http.get<Seeker[]>(Global.url+'/getJobAllSeekers/'+jobId)
+    return this.http.get<Seeker[]>(Global.url+'/getJobApplicants/'+jobId)
   }
 
   postJob(job:Job){

@@ -19,7 +19,11 @@
                 <tr *ngFor='let seeker of seekers'>
                     <td>1</td>
                     <td>{{seeker.firstName}} {{seeker.lastName}}</td>
-                    <td>{{seeker.skills}}</td>
+                    <td>
+                        <ng-container *ngFor='let skill of seeker.skills'>{{skill.skillName}},</ng-container>
+
+                        <!-- {{seeker.skills}} -->
+                    </td>
                     <td> <button class="btn btn-primary" (click)='selectedId=seeker.email' data-toggle="modal"
                             data-target="#seekerDetails">View Details</button>
                     </td>
@@ -57,7 +61,11 @@
                     </tr>
                     <tr>
                         <th>Skills:</th>
-                        <td>{{getSeeker().workExperiences}}</td>
+                        <td>
+                            <ng-container *ngFor='let skill of getSeeker().skills'>{{skill.skillName}},</ng-container>
+
+                            <!-- {{getSeeker().workExperiences}} -->
+                        </td>
                     </tr>
                 </table>
 
@@ -80,8 +88,8 @@
                             <td>{{e.jobTitle}}</td>
                             <td>{{e.company}}</td>
                             <td>{{e.city}}</td>
-                            <td>{{e.startDate}}</td>
-                            <td>{{e.endDate}}</td>
+                            <td>{{e.startDate|date}}</td>
+                            <td>{{e.endDate|date}}</td>
                             <td>
                                 <p>
                                     {{e.description}}
@@ -110,8 +118,8 @@
                             <td>{{e.degree}}</td>
                             <td>{{e.university}}</td>
                             <td>{{e.percentage}}</td>
-                            <td>{{e.startDate}}</td>
-                            <td>{{e.endDate}}</td>
+                            <td>{{e.startDate|date}}</td>
+                            <td>{{e.endDate|date}}</td>
                         </tr>
                     </tbody>
                 </table>

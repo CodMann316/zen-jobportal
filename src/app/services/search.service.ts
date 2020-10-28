@@ -26,4 +26,8 @@ export class SearchService {
     //return this.http.get<Seeker[]>(Global.url+"/seekerSearch",{params})
     return this.http.get<Seeker[]>(Global.url + "/assets/seekers.json", { params })
   }
+
+  getAllSeekers(): Observable<any> {
+    return this.http.get<Seeker[]>(Global.url + "/seeker")
+  }
 }
