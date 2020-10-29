@@ -23,11 +23,11 @@ export class AppComponent implements OnInit {
 
   constructor(private cookie: CookieService, private loginService: LoginService) {
     loginService.isLoggedIn();
-    if (loginService.isEmployer()){
+    if (loginService.isEmployer()) {
       console.log('Employer Profile INIT')
       this.editEmployerProfile = new EmployerProfileComponent(loginService);
     }
-    else{
+    else {
       console.log('Seeker Profile INIT')
       this.editProfile = new SeekerProfileComponent(loginService);
     }
@@ -58,17 +58,22 @@ export class AppComponent implements OnInit {
 
   editUserProfile() {
 
-    if (this.loginService.isEmployer()){
+    if (this.loginService.isEmployer()) {
       console.log("employer profile")
       this.editEmployerProfile.open();
     }
-    else{
+    else {
       this.editProfile.open();
       console.log("Seeker profile")
     }
+
   }
 
 
+  goToAbout() {
+    let el = document.getElementById("About");
+    el.scrollIntoView();
+  }
 
 
 

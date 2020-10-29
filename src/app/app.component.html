@@ -25,7 +25,7 @@
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img src="assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-        CarrerSolutions
+        CareerSolutions
       </a>
     </nav>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -38,12 +38,13 @@
           <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active bg-light">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" (click)='goToAbout()'>About</a>
         </li>
         <li class="nav-item active bg-light">
-          <a class="nav-link" href="#">Find Jobs</a>
+          <a class="nav-link" routerLink="">Find Jobs</a>
         </li>
-        <li class="nav-item dropdown active bg-light">
+
+        <!-- <li class="nav-item dropdown active bg-light">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Recutires
@@ -53,9 +54,12 @@
             <a class="dropdown-item" href="#">ME</a>
             <a class="dropdown-item" href="#">CE</a>
           </div>
+        </li> -->
+        <li class="nav-item active bg-light">
+          <a class="nav-link" routerLink="">Post a Job</a>
         </li>
-        <li><a class="nav-link" href="#">Post a Job</a></li>
-        <li><button type="button" class="btn btn-success">Want a Job</button></li>
+        <!-- <li><a class="nav-link" href="#">Post a Job</a></li> -->
+        <!-- <li><button type="button" class="btn btn-success">Want a Job</button></li> -->
 
 
 
@@ -110,35 +114,141 @@
 <!-- Cards  -->
 <div class="container">
   <div class="card-deck">
-    <div class="card">
-      <img src="assets\images\c1.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-          content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="assets\images\c2.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="assets\images\c3.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-          content. This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
+   <div class="card">
+     <img src="assets\images\c1.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h3 class="card-title">Search Millions of Jobs</h3>
+       <p class="card-text">CareerSolution helps millions of people find great jobs and love what they do every day.</p>
+      
+     </div>
+   </div>
+   <div class="card">
+     <img src="assets\images\c2.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h3 class="card-title">Top Careers With Smart Candidate</h3>
+       <p class="card-text">Get the top career with smart companyies and hired as wish for.</p>
+      
+     </div>
+   </div>
+   <div class="card">
+     <img src="assets\images\c3.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h3 class="card-title">Search Expert Candidates</h3>
+       <p class="card-text">CareerSolution search interface allows you to discover thousands of candidates who meet your exact hiring requirements in seconds.</p>
+      
+     </div>
+   </div>
+ </div>
+ <br><br><br>
+ </div>
+<section id="About">
+  <div class="jumbotron">
 
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h3 class="text-uppercase">About Us</h3>
+        <p>CareerSolution strives to put job seekers first, giving them free access to search for jobs, post resumes, and research companies. Every day, we connect millions of people to new opportunities..</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h3 class="text-uppercase">Employers</h3>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="">Register</a>
+          </li>
+          <li>
+            <a href="#!">Post a Job</a>
+          </li>
+          <li>
+            <a href="#!">Advance Skills Search</a>
+          </li>
+          <li>
+            <a href="#!">Recruiting Service</a>
+          </li>
+          <li>
+            <a href="#!">Blog</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h3 class="text-uppercase">Job Seekers</h3>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">How does it work</a>
+          </li>
+          <li>
+            <a href="#!">Register</a>
+          </li>
+          <li>
+            <a href="#">Post Your Skills</a>
+          </li>
+          <li>
+            <a href="#!">Upload Your CV/Resume</a>
+          </li>
+          <li>
+            <a href="#!">Job Search</a>
+          </li>
+          <li>
+            <a href="#!">Employer Search</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="col-md-2 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h3 class="text-uppercase">Contributors</h3>
+
+        <ul class="list-unstyled">
+          <li>
+            Rohan Shravage
+          </li>
+          <li>
+            Prathamesh Dhoble
+          </li>
+          <li>
+            Pushkar Nagpure
+          </li>
+          <li>
+            Amit Yadav
+          </li>
+          <li>
+            Aastha
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  </section>
 <!-- Footer -->
 <footer class="page-footer font-small unique-color-dark pt-4">
 
