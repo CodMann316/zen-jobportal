@@ -1,7 +1,6 @@
-<div class="container card" style="margin-top: -10%;">
+<div class="container card" style="margin-top: -5%;">
     <div class="card-header" style="margin-left: -2%;margin-right: -2%;">
         <h1>Dashboard
-
 
             <button class="btn btn-primary d-flex justify-content-end" (click)='postNewJob()' data-toggle="modal" data-target="#postJob">Post
                 Job</button>
@@ -32,7 +31,9 @@
                         <!-- <td>1</td> -->
                         <td>{{job.jobTitle}}</td>
                         <td>{{job.location}}</td>
-                        <td><div *ngFor='let skills of job.skills'>{{skills.skillName}},</div></td>
+                        <td>
+                            <ng-container *ngFor='let skills of job.skills'>{{skills.skillName}},</ng-container>
+                            <!-- <div *ngFor='let skills of job.skills'>{{skills.skillName}},</div></td> -->
                         <td>{{job.salary |currency}}</td>
                         <td>{{job.status}}</td>
                         <td>

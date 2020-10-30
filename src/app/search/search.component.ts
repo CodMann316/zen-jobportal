@@ -57,9 +57,9 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  removeSkill(skill) {
+  removeSkill(skill:string) {
 
-    this.selectedSkills = this.selectedSkills.filter(e => !e.match(skill))
+    this.selectedSkills = this.selectedSkills.filter(e => !(e===skill))
   }
 
   searchJob() {

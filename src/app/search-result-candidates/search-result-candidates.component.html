@@ -1,4 +1,7 @@
-<br><br>
+<div class="container card" style="margin-top: 28%;">
+  <div class="card-header" style="margin-left: -1.5%;margin-right: -1.5%;">
+      <h1>Candidates</h1>
+  </div><br>
 
 <div class="container">
   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -23,8 +26,8 @@
             </tfoot> -->
     <tbody>
 
-      <tr *ngFor='let seeker of seekers'>
-        <td>1</td>
+      <tr *ngFor='let seeker of seekers; let i = index'>
+        <td>{{i+1}}</td>
         <td>{{seeker.firstName}} {{seeker.lastName}}</td>
         <td>
           <ng-container *ngFor='let skill of seeker.skills'>{{skill.skillName}},</ng-container>

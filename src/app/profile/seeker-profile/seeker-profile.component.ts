@@ -58,7 +58,7 @@ export class SeekerProfileComponent implements OnInit {
     return this.seeker
   }
 
-  addWorkExperience() {
+  addWorkExperience() { 
     this.seeker.workExperiences.push(this.workExperience);
     this.workExperience = new WorkExperience()
     document.getElementById("closeWork").click()

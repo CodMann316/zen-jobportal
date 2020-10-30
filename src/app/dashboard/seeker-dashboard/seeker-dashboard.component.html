@@ -1,5 +1,5 @@
 
-<div class="container card" style="margin-top: -10%;">
+<div class="container card" style="margin-top: -3%;">
      <div class="card-header" style="margin-left: -2%;margin-right: -2%;">
         <h1>Dashboard</h1>
     </div>
@@ -37,7 +37,8 @@
                         <td>{{job.jobTitle}}</td>
                         <td>{{job.location}}</td>
                         <td>{{job.company}}</td>
-                        <td>{{job.skills}}</td>
+                        <td><div *ngFor='let skills of job.skills'>{{skills.skillName}},</div></td>
+                        <!-- <td>{{job.skills}}</td> -->
                         <td>{{job.salary |currency}}</td>
                         <td> <button class="btn btn-primary" (click)='selectedId=job.jobId' data-toggle="modal"
                                 data-target="#jobDetails">View Details</button>
@@ -74,7 +75,9 @@
                     </tr>
                     <tr>
                         <th>Required Skills:</th>
-                        <td>{{getJob().skills}}</td>
+                        <td><div *ngFor='let skills of getJob().skills'>{{skills.skillName}},</div></td>
+
+                        <!-- <td>{{getJob().skills}}</td> -->
                     </tr>
                     <tr>
                         <th>Salary:</th>

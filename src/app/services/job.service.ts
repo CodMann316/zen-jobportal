@@ -37,7 +37,7 @@ export class JobService {
     // let params:HttpParams=new HttpParams();
     // params.set("jobId",jobId);
     // params.set("email" ,this.login.getUserName());
-    return this.http.get<boolean>(Global.url+'/applyForJob/'+jobId+'/'+this.login.getUserName())
+    return this.http.post<boolean>(Global.url+'/applyForJob/'+jobId+'/'+this.login.getUserName(),[])
   }
 
   getAppliedJobs():Observable<any>{
