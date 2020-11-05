@@ -66,4 +66,8 @@ cancelJobApplication(jobId):Observable<any>{
   return this.http.delete<boolean>(Global.url+'/cancelJobApplication/'+jobId+'/'+this.login.getUserName())
 }
 
+test(){
+  
+}
+
 }
