@@ -34,7 +34,7 @@
                         <td>
                             <ng-container *ngFor='let skills of job.skills'>{{skills.skillName}},</ng-container>
                             <!-- <div *ngFor='let skills of job.skills'>{{skills.skillName}},</div></td> -->
-                        <td>{{job.salary |currency}}</td>
+                        <td>{{job.salary |currency:'INR'}}</td>
                         <td>{{job.status}}</td>
                         <td>
                             <a href="\employerDashboard\jobApplicants\{{job.jobId}}\{{job.jobTitle}}">

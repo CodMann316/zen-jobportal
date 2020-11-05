@@ -39,7 +39,7 @@
                         <td>{{job.company}}</td>
                         <td><div *ngFor='let skills of job.skills'>{{skills.skillName}},</div></td>
                         <!-- <td>{{job.skills}}</td> -->
-                        <td>{{job.salary |currency}}</td>
+                        <td>{{job.salary |currency:'INR'}}</td>
                         <td> <button class="btn btn-primary" (click)='selectedId=job.jobId' data-toggle="modal"
                                 data-target="#jobDetails">View Details</button>
                         </td>

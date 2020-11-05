@@ -72,7 +72,7 @@
         </div>
         <div class="text-center mt-3">
 
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addEducation">Add
+            <button type="button" class="btn btn-info btn-lg rounded-pill" data-toggle="modal" data-target="#addEducation">Add
                 Education</button>
         </div>
         <br>
@@ -118,7 +118,7 @@
                         <tr *ngFor='let e of workExperiences'>
                             <td>{{e.jobTitle}}</td>
                             <td>{{e.company}}</td>
-                            <td><button class="align-right" (click)='removeWorkExperience(e)' class="btn-primary"><i class="fa fa-trash"
+                            <td><button class="align-right" (click)='removeWorkExperience(e)' class="btn-primary "><i class="fa fa-trash"
                                 aria-hidden="true"></i></button>
                             </td>
                         </tr>
@@ -129,7 +129,7 @@
 
             <div class="text-center mt-3">
                 
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addWorkExperience">Add
+                <button type="button" class="btn btn-info btn-lg rounded-pill" data-toggle="modal" data-target="#addWorkExperience">Add
                     WorkExperience</button>
             </div>
             <br>
@@ -161,17 +161,17 @@
 
 
         <div class="form-group">
-            <label>Skill Name</label> <input required [(ngModel)]=skillName name="skillNm" class="form-control"
+            <label>Skill Name</label> <input [(ngModel)]=skillName name="skillNm" class="form-control"
                 type="text">
         </div>
 
         <br>
 
 
-        <div class="text-center ">
+        <div class="container text-center col-6">
 
-            <input type="submit" (click)='addSkill()' name="inSkill" value="Add"
-                class="btn btn-primary rounded-pill form-control">
+            <input type="button" (click)='addSkill()' name="inSkill" value="Add Skill"
+                class="btn btn-warning rounded-pill form-control row justify-content-md-center">
 
         </div>
 
@@ -329,7 +329,7 @@
 
                     <div class="form-group">
                         <label>End date</label> <input [(ngModel)]=workExperience.endDate name="inWorkYear"
-                            class="form-control" type="date" required>
+                            class="form-control" type="date">
                     </div>
 
                     <div class="form-group">
