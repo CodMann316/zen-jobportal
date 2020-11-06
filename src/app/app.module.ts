@@ -52,11 +52,8 @@ import { ContactusComponent } from './contactus/contactus.component';
     MatInputModule,
     MatSelectModule,
     MatStepperModule,
-    
     HttpClientModule,
-    
     BrowserAnimationsModule,
-    
     NgbModule
     
   ],

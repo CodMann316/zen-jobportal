@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Seeker } from '../model/seeker.model';
+import { FileService } from '../services/file.service';
 import { SearchService } from '../services/search.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { SearchService } from '../services/search.service';
 })
 export class SearchResultCandidatesComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private searchService: SearchService) { }
+  constructor(private route: ActivatedRoute, private searchService: SearchService, private fileService:FileService) { }
 
   skills: string[] = [];
   ngOnInit(): void {
@@ -65,5 +66,18 @@ export class SearchResultCandidatesComponent implements OnInit {
   //     result => alert('Is applied Successful:' + result)
   //   )
   // }
+
+
+
+  getSeekerResume(id: string) {
+    this.fileService.getSeekerResume(id).subscribe(
+      data => {
+        const blob = new Blob([data], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url)
+      },
+      error=> alert("Resume not found")
+    )
+  }
 
 }

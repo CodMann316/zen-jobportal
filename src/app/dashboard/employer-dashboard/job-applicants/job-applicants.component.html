@@ -12,6 +12,7 @@
                     <th>Candidate Name</th>
                     <th>Skills</th>
                     <th>Details</th>
+                    <th>Resume</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,11 @@
                     </td>
                     <td> <button class="btn btn-primary" (click)='selectedId=seeker.email' data-toggle="modal"
                             data-target="#seekerDetails">View Details</button>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-primary" (click)='getSeekerResume(seeker.email)'
+                            >Download Resume</button>
                     </td>
                 </tr>
             </tbody>
